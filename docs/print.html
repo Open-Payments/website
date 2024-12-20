@@ -1,0 +1,2332 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Open Payments - Payment Processing Engine for Modern Financial Systems</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Components</li><li class="chapter-item expanded "><a href="message-processor/index.html"><strong aria-hidden="true">1.</strong> Message Processor</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="message-processor/working-principle.html"><strong aria-hidden="true">1.1.</strong> How the Product Works</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="message-processor/workflow-processor.html"><strong aria-hidden="true">1.1.1.</strong> Workflow Processor</a></li><li class="chapter-item expanded "><a href="message-processor/workflow-definition.html"><strong aria-hidden="true">1.1.2.</strong> Workflow Definition</a></li><li class="chapter-item expanded "><a href="message-processor/tech-components.html"><strong aria-hidden="true">1.1.3.</strong> Technical Components</a></li><li class="chapter-item expanded "><a href="message-processor/message-structure.html"><strong aria-hidden="true">1.1.4.</strong> Message structure</a></li><li class="chapter-item expanded "><a href="message-processor/auditing.html"><strong aria-hidden="true">1.1.5.</strong> Error Handling & Auditing Details</a></li></ol></li><li class="chapter-item expanded "><a href="message-processor/auditing.html"><strong aria-hidden="true">1.2.</strong> Error Handling and Auditing Details</a></li><li class="chapter-item expanded "><a href="message-processor/core-strengths.html"><strong aria-hidden="true">1.3.</strong> Core Strengths</a></li></ol></li><li class="chapter-item expanded "><a href="messages-library/index.html"><strong aria-hidden="true">2.</strong> Messages Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="messages-library/installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="messages-library/usage.html"><strong aria-hidden="true">2.2.</strong> Usage</a></li></ol></li><li class="chapter-item expanded "><a href="messages-api/index.html"><strong aria-hidden="true">3.</strong> Messages API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="messages-api/installation.html"><strong aria-hidden="true">3.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="messages-api/usage.html"><strong aria-hidden="true">3.2.</strong> Usage</a></li></ol></li><li class="chapter-item expanded "><a href="transformation/index.html"><strong aria-hidden="true">4.</strong> Transformation Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="transformation/usage.html"><strong aria-hidden="true">4.1.</strong> Usage</a></li><li class="chapter-item expanded "><a href="transformation/reference.html"><strong aria-hidden="true">4.2.</strong> Reference</a></li></ol></li><li class="chapter-item expanded "><a href="enrichr/index.html"><strong aria-hidden="true">5.</strong> Enrichment Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="enrichr/usage.html"><strong aria-hidden="true">5.1.</strong> Usage</a></li><li class="chapter-item expanded "><a href="enrichr/errorhandling.html"><strong aria-hidden="true">5.2.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="samplify/index.html"><strong aria-hidden="true">6.</strong> Samplify Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samplify/installation.html"><strong aria-hidden="true">6.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="samplify/usage.html"><strong aria-hidden="true">6.2.</strong> Usage</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="contributions.html">Contributions</a></li><li class="chapter-item expanded affix "><a href="license.html">License</a></li><li class="chapter-item expanded affix "><a href="contactus.html">Contact Us</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Open Payments - Payment Processing Engine for Modern Financial Systems</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p align="center">
+  <img src="./assets/profile-pic.png"  alt="Open Payments" width="128"/>
+</p>
+<h1 id="open-payments"><a class="header" href="#open-payments"><p style="text-align:center;">Open Payments</p></a></h1>
+<p><strong>Open Payments</strong> is an open-source initiative focused on building a comprehensive toolkit for creating a modern, scalable, and efficient payment processing engine for banks and financial institutions. Our vision is to streamline financial messaging, facilitate interoperability across diverse financial ecosystems, and enable innovation within the payment industry. Open Payments provides robust, open-source components that make it easier for developers and institutions to implement secure and high-performance payment solutions.</p>
+<h2 id="what-we-offer"><a class="header" href="#what-we-offer">What We Offer</a></h2>
+<ul>
+<li>
+<p><strong><a href="./message-processor/">Message Processor</a></strong>: A powerful orchestration engine that manages and processes financial messages. It enables the seamless execution of payment workflows, from data enrichment and validation to transformation and routing, across multiple systems and services.</p>
+</li>
+<li>
+<p><strong><a href="./messages-library/">Messages Library</a></strong>: A feature-rich library designed to handle the intricacies of financial messaging. Our library supports parsing, validating, transforming, and generating financial messages, with current support for widely used formats such as ISO 20022 and FedNow.</p>
+</li>
+<li>
+<p><strong><a href="./messages-api/">Messages API</a></strong>: A RESTful API that exposes the capabilities of the Messages Library to external systems. With endpoints for message validation, transformation, and sample generation, it enables seamless integration with existing infrastructures.</p>
+</li>
+<li>
+<p><strong><a href="./transformation/">Message Transformation Library</a></strong>: A versatile library that facilitates the transformation of message formats. Using powerful, configurable transformations, it enables seamless interoperability between different message standards and systems.</p>
+</li>
+<li>
+<p><strong><a href="./samplify/">Samplify Library</a></strong>: Generate realistic, valid sample messages tailored for testing and development. This tool is invaluable for QA engineers, developers, and testing environments, offering flexibility to customize samples per unique testing requirements.</p>
+</li>
+</ul>
+<h2 id="why-choose-open-payments"><a class="header" href="#why-choose-open-payments">Why Choose Open Payments?</a></h2>
+<p>Open Payments offers a robust, developer-friendly framework for payment processing. Our open-source foundation empowers users to extend and customize the solution, whether for new formats, integration with emerging technologies, or unique compliance needs. We emphasize adaptability, reliability, and transparency, enabling financial institutions to leverage a community-driven approach to innovation.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="message-processor"><a class="header" href="#message-processor">Message Processor</a></h1>
+<p><a href="https://github.com/Open-Payments/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" /></a></p>
+<p>The Message Processor is the core engine of the Open Payments platform, serving as the central nervous system that orchestrates payment transactions seamlessly from initiation to completion. It streamlines the flow of financial messages through a robust, security-first architecture. Each message passing through the system is:</p>
+<ul>
+<li><strong>Enriched</strong>: Adds necessary information such as customer verification data and compliance checks, including OFAC screening and AML validations</li>
+<li><strong>Validated</strong>: Confirms accuracy and compliance with regulatory and business rules, including Regulation guidelines</li>
+<li><strong>Transformed</strong>: Adjusts message formats to meet internal or external standards, supporting ISO 20022, SWIFT, and proprietary formats</li>
+<li><strong>Routed</strong>: Directs messages to appropriate systems or networks based on configurable workflows</li>
+</ul>
+<p>By efficiently handling inbound messages, applying necessary transformations, and directing them to designated outbound channels, the Message Processor enables seamless integration with a bank's existing systems. Its support for complex, multi-step workflows allows it to adapt to diverse payment formats and regulatory requirements, enhancing interoperability and operational efficiency.</p>
+<h2 id="use-case-1-fednow-customer-credit-transfer-flow"><a class="header" href="#use-case-1-fednow-customer-credit-transfer-flow">Use Case #1: FedNow Customer Credit Transfer Flow</a></h2>
+<p>In this use case, the Message Processor manages a real-time FedNow Customer Credit Transfer, overseeing each stage from initiation by the sender's bank to final settlement at the clearing house.</p>
+<ul>
+<li><strong>Initiation</strong>: The sender's bank initiates a credit transfer request formatted according to FedNow specifications. This message is sent to the Message Processor's inbound channel.</li>
+<li><strong>Enrichment</strong>: Upon receiving the message, the Message Processor enriches it by verifying customer details, checking the availability of funds, and applying regulatory compliance checks through configured enrichment connectors.</li>
+<li><strong>Workflow Processing</strong>: The message is processed based on predefined rules within the workflow configuration. The Message Processor validates the message format and applies any necessary transformations to align with internal standards.</li>
+<li><strong>Clearing and Settlement</strong>: After processing, the Message Processor routes the message through the outbound connection to the clearing house for final settlement.</li>
+<li><strong>Response Handling</strong>: The processor manages acknowledgments and response messages from the clearing house back to the sender's bank, ensuring end-to-end transaction visibility and confirmation.</li>
+</ul>
+<h2 id="use-case-2-real-time-payment-processor-integration"><a class="header" href="#use-case-2-real-time-payment-processor-integration">Use Case #2: Real-time Payment Processor Integration</a></h2>
+<p>In this scenario, the Message Processor functions as an embedded component within a financial institution's internal payment system, managing transactions in real-time before they reach the core banking system.</p>
+<ul>
+<li><strong>Transaction Intake</strong>: Incoming payment requests from various channels (e.g., mobile apps, web portals) are received by the processor with guaranteed message delivery and deduplication.</li>
+<li><strong>Initial Screening and Enrichment</strong>: The Message Processor performs initial validations and enrichment, such as Know Your Customer (KYC) checks, anti-fraud assessments, and data standardization.</li>
+<li><strong>Processing</strong>: Based on preconfigured workflows, the Message Processor validates the message format, applies business rules, and prepares it for core processing. This may include formatting transformations to meet internal standards.</li>
+<li><strong>Routing to Core System</strong>: Once validated and transformed, the message is routed to the core banking system for final processing and settlement, with built-in failover and retry mechanisms.</li>
+</ul>
+<h2 id="expanding-capabilities"><a class="header" href="#expanding-capabilities">Expanding Capabilities</a></h2>
+<p>The Message Processor extends beyond traditional payment processing to serve as a comprehensive solution for message orchestration across financial systems. Its flexible architecture adapts to evolving industry needs, supporting emerging payment methods, real-time settlement networks, and regulatory requirements.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="how-it-works-operational-flow"><a class="header" href="#how-it-works-operational-flow">How It Works: Operational Flow</a></h2>
+<p>The Message Processor follows a systematic workflow that ensures reliable, secure processing of payment messages. Here's a detailed breakdown of each stage:</p>
+<p><img src="message-processor/../assets/product-architecture.jpeg" alt="Message Processor working principle" /></p>
+<h3 id="1-inbound-connection"><a class="header" href="#1-inbound-connection">1. Inbound Connection</a></h3>
+<ul>
+<li>
+<p><strong>Message Reception</strong></p>
+<ul>
+<li>Accepts incoming messages from multiple sources:
+<ul>
+<li>Bank APIs</li>
+<li>Financial gateways</li>
+<li>External systems</li>
+</ul>
+</li>
+<li>Validates message format and structure</li>
+<li>Assigns unique transaction identifier</li>
+</ul>
+</li>
+<li>
+<p><strong>Queue Management</strong></p>
+<ul>
+<li>Places messages in inbound queue</li>
+<li>Maintains message priority</li>
+<li>Ensures ordered processing</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-workflow-processor"><a class="header" href="#2-workflow-processor">2. Workflow Processor</a></h3>
+<ul>
+<li>
+<p><strong>Message Retrieval</strong></p>
+<ul>
+<li>Pulls messages from inbound queue</li>
+<li>Maintains processing order</li>
+<li>Manages throughput based on system capacity</li>
+</ul>
+</li>
+<li>
+<p><strong>Workflow Selection</strong></p>
+<ul>
+<li>Matches messages to appropriate workflows based on:
+<ul>
+<li>Payment type</li>
+<li>Originator</li>
+<li>Geographic region</li>
+<li>Message attributes</li>
+</ul>
+</li>
+<li>Retrieves workflow definition from storage</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-workflow-execution"><a class="header" href="#3-workflow-execution">3. Workflow Execution</a></h3>
+<p>The system processes messages through a flexible combination of:</p>
+<ul>
+<li>Enrichment tasks</li>
+<li>Validation processes</li>
+<li>Transformation operations</li>
+</ul>
+<p>These steps can be repeated and reordered based on workflow requirements.</p>
+<h3 id="4-error-management"><a class="header" href="#4-error-management">4. Error Management</a></h3>
+<ul>
+<li>
+<p><strong>Error Detection</strong></p>
+<ul>
+<li>Monitors processing steps</li>
+<li>Identifies validation failures</li>
+<li>Catches system errors</li>
+<li>Flags data inconsistencies</li>
+</ul>
+</li>
+<li>
+<p><strong>Recovery Procedures</strong></p>
+<ul>
+<li>Implements retry logic for transient errors</li>
+<li>Routes to error queue when needed</li>
+<li>Enables manual intervention</li>
+<li>Maintains processing state</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-outbound-processing"><a class="header" href="#5-outbound-processing">5. Outbound Processing</a></h3>
+<ul>
+<li>
+<p><strong>Message Dispatch</strong></p>
+<ul>
+<li>Routes to designated endpoints</li>
+<li>Supports multiple destinations</li>
+<li>Ensures secure transmission</li>
+<li>Verifies delivery</li>
+</ul>
+</li>
+<li>
+<p><strong>Confirmation Handling</strong></p>
+<ul>
+<li>Processes acknowledgments</li>
+<li>Updates transaction status</li>
+<li>Maintains delivery records</li>
+<li>Handles failed deliveries</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="workflow-processor-detailed-component-architecture"><a class="header" href="#workflow-processor-detailed-component-architecture">Workflow Processor: Detailed Component Architecture</a></h2>
+<p>The Workflow Processor serves as the core processing engine, orchestrating the entire message handling lifecycle. Here's a detailed breakdown of its key components:</p>
+<p><img src="message-processor/../assets/workflow-processor.jpeg" alt="Workflow Processor" /></p>
+<h3 id="1-incoming-message-queue"><a class="header" href="#1-incoming-message-queue">1. Incoming Message Queue</a></h3>
+<ul>
+<li><strong>Primary Function</strong>:
+<ul>
+<li>Initial reception point for payment messages</li>
+<li>Message buffering and queuing</li>
+<li>Load balancing support</li>
+</ul>
+</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>High-throughput message intake</li>
+<li>Traffic spike handling</li>
+<li>Message persistence</li>
+<li>Order preservation</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-rule-engine"><a class="header" href="#2-rule-engine">2. Rule Engine</a></h3>
+<ul>
+<li><strong>Core Responsibilities</strong>:
+<ul>
+<li>Workflow selection and assignment</li>
+<li>Processing rule application</li>
+<li>Dynamic decision making</li>
+</ul>
+</li>
+<li><strong>Workflow Matching Criteria</strong>:
+<ul>
+<li>Payment type</li>
+<li>Message originator</li>
+<li>Geographic region</li>
+<li>Message attributes</li>
+<li>Business rules</li>
+</ul>
+</li>
+<li><strong>Integration Points</strong>:
+<ul>
+<li>Direct access to Workflow Metadata</li>
+<li>Connection to validation services</li>
+<li>Interface with enrichment systems</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-workflow-execution-steps"><a class="header" href="#3-workflow-execution-steps">3. Workflow Execution Steps</a></h3>
+<p>The Workflow Processor supports flexible combinations of three core processing tasks that can be arranged in any order and repeated as needed within a workflow:</p>
+<h4 id="core-processing-tasks"><a class="header" href="#core-processing-tasks">Core Processing Tasks</a></h4>
+<ul>
+<li>
+<p><strong>Enrichment</strong>:</p>
+<ul>
+<li>Customer information addition</li>
+<li>Account detail enhancement</li>
+<li>Regulatory compliance data inclusion</li>
+<li>External data retrieval</li>
+</ul>
+</li>
+<li>
+<p><strong>Validation</strong>:</p>
+<ul>
+<li>Data integrity checks</li>
+<li>Mandatory field validation</li>
+<li>Format verification</li>
+<li>Regulatory compliance checks</li>
+</ul>
+</li>
+<li>
+<p><strong>Transformation</strong>:</p>
+<ul>
+<li>Format conversions</li>
+<li>Data mapping</li>
+<li>Schema adjustments</li>
+</ul>
+</li>
+</ul>
+<p>The actual sequence depends on:</p>
+<ul>
+<li>Message type requirements</li>
+<li>Business rules</li>
+<li>Regulatory needs</li>
+<li>Destination system requirements</li>
+</ul>
+<p>Each step can be:</p>
+<ul>
+<li>Repeated multiple times</li>
+<li>Applied conditionally</li>
+<li>Executed in parallel where appropriate</li>
+<li>Skipped based on conditions</li>
+</ul>
+<h3 id="4-workflow-metadata"><a class="header" href="#4-workflow-metadata">4. Workflow Metadata</a></h3>
+<ul>
+<li><strong>Purpose</strong>:
+<ul>
+<li>Workflow configuration storage</li>
+<li>Processing step definitions</li>
+<li>Business rule management</li>
+</ul>
+</li>
+<li><strong>Structure</strong>:
+<ul>
+<li>Workflow definitions</li>
+<li>Processing sequences</li>
+<li>Rule sets</li>
+<li>Configuration parameters</li>
+</ul>
+</li>
+<li><strong>Access Patterns</strong>:
+<ul>
+<li>Rule Engine reference</li>
+<li>Dynamic workflow loading</li>
+<li>Configuration updates</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-outbound-message-queue"><a class="header" href="#5-outbound-message-queue">5. Outbound Message Queue</a></h3>
+<ul>
+<li><strong>Functions</strong>:
+<ul>
+<li>Processed message buffering</li>
+<li>Destination routing</li>
+<li>Delivery management</li>
+</ul>
+</li>
+<li><strong>Features</strong>:
+<ul>
+<li>Multiple destination support</li>
+<li>Retry handling</li>
+<li>Load balancing</li>
+<li>Message persistence</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="workflow-definition-format-specification"><a class="header" href="#workflow-definition-format-specification">Workflow Definition Format Specification</a></h1>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>The Workflow Definition format specifies the structure and sequence of tasks required to process a message in the Open Payments system. Each workflow is event-driven, with tasks executing based on the message's processing state.</p>
+<h2 id="specification"><a class="header" href="#specification">Specification</a></h2>
+<h3 id="workflow-structure"><a class="header" href="#workflow-structure">Workflow Structure</a></h3>
+<pre><code class="language-json">{
+  "id": "string",                    // Unique identifier for the workflow
+  "name": "string",                  // Descriptive name
+  "description": "string",           // Detailed description of workflow's purpose
+  "version": "integer",              // Version number of the workflow definition
+  "domain": "string",                // Domain this workflow belongs to
+  "status": "string",                // Status: draft, active, or deprecated
+  "tasks": [                         // Array of tasks in the workflow
+    {
+      "task_id": "string",           // Unique identifier for the task
+      "name": "string",              // Descriptive name of the task
+      "description": "string",        // Description of what the task does
+      "trigger_condition": {          // Condition for task execution
+        // Processing state conditions that trigger this task
+      },
+      "function": "string",          // Function type: Validate, Enrich, or Publish
+      "input": {                     // Function-specific configuration
+        // Configuration varies based on function type
+      }
+    }
+  ]
+}
+</code></pre>
+<h3 id="functions"><a class="header" href="#functions">Functions</a></h3>
+<h4 id="1-validate"><a class="header" href="#1-validate">1. Validate</a></h4>
+<p>Validates message data against defined business rules.</p>
+<pre><code class="language-json">{
+  "function": "Validate",
+  "input": {
+    "ruleset": "string"             // Identifier of validation ruleset
+  }
+}
+</code></pre>
+<h4 id="2-enrich"><a class="header" href="#2-enrich">2. Enrich</a></h4>
+<p>Enriches message with additional data.</p>
+<pre><code class="language-json">{
+  "function": "Enrich",
+  "input": {
+    "source": {
+      "type": "string",             // Type of data source
+      "config": {                   // Source-specific configuration
+        // Configuration properties
+      }
+    },
+    "mapping": {
+      "spec_id": "string"          // Identifier of mapping specification
+    }
+  }
+}
+</code></pre>
+<h4 id="3-publish"><a class="header" href="#3-publish">3. Publish</a></h4>
+<p>Publishes message to external system, with optional transformation.</p>
+<pre><code class="language-json">{
+  "function": "Publish",
+  "input": {
+    "destination": {
+      "type": "string",            // queue or topic
+      "name": "string"             // Destination name
+    },
+    "transform": {                 // Optional transformation
+      "schema": "string",          // Transform schema identifier
+      "target_format": "string"    // Target format
+    }
+  }
+}
+</code></pre>
+<h3 id="example-implementation"><a class="header" href="#example-implementation">Example Implementation</a></h3>
+<pre><code class="language-json">{
+  "id": "FEDNOW_CREDIT_TRANSFER",
+  "name": "FedNow Credit Transfer Processing",
+  "description": "Processes FedNow credit transfer messages",
+  "version": 1,
+  "domain": "payments",
+  "status": "active",
+  "tasks": [
+    {
+      "task_id": "validate_payment",
+      "name": "Validate Payment Data",
+      "description": "Validates the incoming payment message",
+      "trigger_condition": {
+        "processing.status": "received"
+      },
+      "function": "Validate",
+      "input": {
+        "ruleset": "FEDNOW_CREDIT_TRANSFER_RULES"
+      }
+    },
+    {
+      "task_id": "enrich_customer_data",
+      "name": "Enrich Customer Information",
+      "description": "Enriches the message with customer data",
+      "trigger_condition": {
+        "processing.progress.prev_task": "validate_payment",
+        "processing.progress.prev_status_code": "SUCCESS"
+      },
+      "function": "Enrich",
+      "input": {
+        "source": {
+          "type": "customer_database",
+          "config": {
+            "lookup_type": "account"
+          }
+        },
+        "mapping": {
+          "spec_id": "CUSTOMER_DATA_MAPPING"
+        }
+      }
+    },
+    {
+      "task_id": "send_to_fednow",
+      "name": "Send to FedNow",
+      "description": "Publishes the message to FedNow",
+      "trigger_condition": {
+        "processing.progress.prev_task": "enrich_customer_data",
+        "processing.progress.prev_status_code": "SUCCESS"
+      },
+      "function": "Publish",
+      "input": {
+        "destination": {
+          "type": "queue",
+          "name": "FEDNOW_OUTBOUND"
+        },
+        "transform": {
+          "schema": "FEDNOW_CREDIT_TRANSFER_MAPPING",
+          "target_format": "ISO20022"
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<h2 id="key-concepts"><a class="header" href="#key-concepts">Key Concepts</a></h2>
+<h3 id="event-driven-execution"><a class="header" href="#event-driven-execution">Event-Driven Execution</a></h3>
+<ul>
+<li>Tasks execute based on message processing state</li>
+<li>Each task has a trigger condition</li>
+<li>Processing continues until no tasks are triggered</li>
+</ul>
+<h3 id="task-functions"><a class="header" href="#task-functions">Task Functions</a></h3>
+<ul>
+<li><strong>Validate</strong>: Applies business rules to message data</li>
+<li><strong>Enrich</strong>: Adds additional data to the message</li>
+<li><strong>Publish</strong>: Sends message to external system</li>
+</ul>
+<h3 id="message-processing"><a class="header" href="#message-processing">Message Processing</a></h3>
+<ul>
+<li>Message state tracked in processing object</li>
+<li>Status codes determine task execution</li>
+<li>Previous task results influence next task</li>
+</ul>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<ol>
+<li>
+<p><strong>Task Naming</strong></p>
+<ul>
+<li>Use clear, descriptive task IDs</li>
+<li>Follow consistent naming convention</li>
+<li>Include purpose in description</li>
+</ul>
+</li>
+<li>
+<p><strong>Trigger Conditions</strong></p>
+<ul>
+<li>Keep conditions simple and clear</li>
+<li>Consider error scenarios</li>
+<li>Handle all possible states</li>
+</ul>
+</li>
+<li>
+<p><strong>Function Configuration</strong></p>
+<ul>
+<li>Use meaningful identifiers</li>
+<li>Configure appropriate error handling</li>
+<li>Document external dependencies</li>
+</ul>
+</li>
+<li>
+<p><strong>Workflow Organization</strong></p>
+<ul>
+<li>Group related tasks logically</li>
+<li>Maintain clear task progression</li>
+<li>Consider maintenance and monitoring</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="technical-architecture-and-components"><a class="header" href="#technical-architecture-and-components">Technical Architecture and Components</a></h2>
+<p>The Message Processor implements a modern, distributed architecture designed for reliability and efficient processing of large transaction volumes. The system comprises four core components that work in concert to ensure smooth message processing:</p>
+<p><img src="message-processor/../assets/technical-architecture.jpeg" alt="Technical architecture" /></p>
+<h3 id="integration-layer"><a class="header" href="#integration-layer">Integration Layer</a></h3>
+<p>The integration system manages inbound and outbound connections, supporting multiple enterprise messaging platforms:</p>
+<ul>
+<li><strong>Supported Message Brokers</strong>:
+<ul>
+<li>Apache Kafka</li>
+<li>Apache Pulsar</li>
+<li>Amazon SQS</li>
+<li>Google Cloud Pub/Sub</li>
+<li>Azure Event Hub</li>
+</ul>
+</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>Protocol-agnostic message handling</li>
+<li>Automatic connection management</li>
+<li>Message format validation</li>
+<li>Delivery guarantee enforcement</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-storage-layer"><a class="header" href="#data-storage-layer">Data Storage Layer</a></h3>
+<p>MongoDB serves as the primary data store, managing three critical data types:</p>
+<ul>
+<li><strong>Workflow Metadata</strong>:
+<ul>
+<li>Process definitions</li>
+<li>Routing rules</li>
+<li>Transformation logic</li>
+<li>Business rules</li>
+</ul>
+</li>
+<li><strong>Enrichment Data</strong>:
+<ul>
+<li>Reference data</li>
+<li>Lookup tables</li>
+<li>Configuration parameters</li>
+</ul>
+</li>
+<li><strong>Transaction Data</strong>:
+<ul>
+<li>Message processing history</li>
+<li>Audit trails</li>
+<li>Processing results</li>
+</ul>
+</li>
+</ul>
+<h3 id="cache-layer"><a class="header" href="#cache-layer">Cache Layer</a></h3>
+<p>Redis provides high-performance caching and concurrency control:</p>
+<ul>
+<li><strong>Primary Functions</strong>:
+<ul>
+<li>Temporary data storage</li>
+<li>Processing state management</li>
+<li>Concurrency lock management</li>
+</ul>
+</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>Message deduplication</li>
+<li>Race condition prevention</li>
+<li>Processing speed optimization</li>
+</ul>
+</li>
+</ul>
+<h3 id="workflow-engine"><a class="header" href="#workflow-engine">Workflow Engine</a></h3>
+<p>The core processing component orchestrates message handling:</p>
+<ul>
+<li><strong>Responsibilities</strong>:
+<ul>
+<li>Workflow execution</li>
+<li>State management</li>
+<li>Data transformation</li>
+<li>Rule application</li>
+</ul>
+</li>
+<li><strong>Integration Points</strong>:
+<ul>
+<li>Pulls workflow definitions from MongoDB</li>
+<li>Uses Redis for concurrency control</li>
+<li>Coordinates with integration layer</li>
+<li>Manages transaction state</li>
+</ul>
+</li>
+</ul>
+<h3 id="system-interaction-flow"><a class="header" href="#system-interaction-flow">System Interaction Flow</a></h3>
+<ol>
+<li>Messages arrive through the integration layer via supported message brokers</li>
+<li>Workflow engine retrieves relevant workflow metadata from MongoDB</li>
+<li>Redis manages processing locks and temporary state</li>
+<li>Workflow engine executes the defined process</li>
+<li>Results are stored in MongoDB and sent to outbound destinations</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="message-structure"><a class="header" href="#message-structure">Message Structure</a></h1>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<p>The Message Structure defines the JSON format used by the Open Payments system to handle incoming messages. This structure is designed to be <strong>generic</strong> and <strong>adaptable</strong>, capable of supporting various message standards across different domains.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Generic structure for multiple use cases</li>
+<li>Domain-specific content encapsulation</li>
+<li>Clear separation of concerns</li>
+<li>Support for multi-tenant deployments</li>
+</ul>
+<h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
+<p>The structure is organized into distinct sections:</p>
+<h3 id="root-level-fields"><a class="header" href="#root-level-fields">Root-Level Fields</a></h3>
+<p>Essential fields that the message processor uses for core operations:</p>
+<ul>
+<li><code>id</code>: Unique message identifier</li>
+<li><code>payload</code>: Original message content</li>
+<li><code>tenant</code>: Multi-tenant identifier</li>
+<li><code>origin</code>: Source information</li>
+<li><code>processing</code>: Processing state</li>
+<li><code>auditlog</code>: Processing history</li>
+</ul>
+<h3 id="domain-specific-sections"><a class="header" href="#domain-specific-sections">Domain-Specific Sections</a></h3>
+<ul>
+<li><code>data</code>: Contains the standardized message content (e.g., ISO20022 for payments)</li>
+<li><code>metadata</code>: Additional context and processing instructions</li>
+</ul>
+<h2 id="standards-support"><a class="header" href="#standards-support">Standards Support</a></h2>
+<h3 id="payments-domain"><a class="header" href="#payments-domain">Payments Domain</a></h3>
+<p>When used for payment processing:</p>
+<ul>
+<li><code>data</code> section contains ISO20022-compliant message structures</li>
+<li>Standard formats like pacs.008 for credit transfers are supported</li>
+<li>Maintains compliance with payment scheme requirements</li>
+</ul>
+<h3 id="other-domains"><a class="header" href="#other-domains">Other Domains</a></h3>
+<p>The structure can accommodate various standards:</p>
+<ul>
+<li>Different message formats can be incorporated</li>
+<li>Domain-specific validations can be implemented</li>
+<li>Custom workflows can be defined</li>
+</ul>
+<h2 id="schema-definition"><a class="header" href="#schema-definition">Schema Definition</a></h2>
+<pre><code class="language-json">{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Open Payments Message Schema",
+  "description": "Generic message structure for processing financial and non-financial messages in the Open Payments system",
+  "type": "object",
+  "required": ["id", "payload", "tenant", "origin", "data", "processing"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the message, automatically generated by the system. Used for message tracking and correlation",
+      "pattern": "^[a-zA-Z0-9-_]+$"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Contains the original message content, either directly or as a reference to external storage",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["inline", "file"],
+          "description": "Specifies how the payload is stored: 'inline' for direct content storage, 'file' for external file reference"
+        },
+        "content": {
+          "type": ["string", "object"],
+          "description": "The actual message content when stored inline. Can be a string or structured object depending on the format"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL pointing to the message content when stored externally. Used for large messages or when content needs to be fetched on demand"
+        },
+        "format": {
+          "type": "string",
+          "description": "Format of the message content (e.g., 'XML', 'JSON', 'ISO20022'). Helps in proper parsing and processing"
+        },
+        "encoding": {
+          "type": "string",
+          "description": "Character encoding of the content (e.g., 'UTF-8', 'ASCII'). Essential for proper text handling"
+        },
+        "size": {
+          "type": "integer",
+          "description": "Size of the payload in bytes. Useful for resource management and monitoring"
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "inline" },
+            "content": { "type": ["string", "object"] }
+          },
+          "required": ["type", "content"],
+          "description": "Configuration for inline payload storage"
+        },
+        {
+          "properties": {
+            "type": { "const": "file" },
+            "url": { "type": "string" }
+          },
+          "required": ["type", "url"],
+          "description": "Configuration for file-based payload storage"
+        }
+      ]
+    },
+    "tenant": {
+      "type": "string",
+      "description": "Identifier for the organization or business unit owning this message. Used in multi-tenant deployments for data isolation"
+    },
+    "origin": {
+      "type": "object",
+      "description": "Information about where and when the message originated",
+      "required": ["system", "channel", "timestamp"],
+      "properties": {
+        "system": {
+          "type": "string",
+          "description": "Identifier of the source system that generated the message (e.g., 'CORE_BANKING', 'MOBILE_APP')"
+        },
+        "channel": {
+          "type": "string",
+          "description": "Specific channel within the source system (e.g., 'API', 'WEB', 'BATCH')"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when the message was created in the source system"
+        }
+      }
+    },
+    "processing": {
+      "type": "object",
+      "description": "Current processing state and progress information used by the workflow engine to manage message flow",
+      "required": ["status", "workflow_id"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Domain-specific status indicating the current state of message processing. For payments, typical flow might be: received -&gt; processing -&gt; completed -&gt; acknowledged. Status values are defined by the specific domain implementation",
+          "examples": ["received", "processing", "completed", "acknowledged", "failed", "rejected"]
+        },
+        "workflow_id": {
+          "type": "string",
+          "description": "Identifier of the workflow definition being used to process this message"
+        },
+        "progress": {
+          "type": "object",
+          "description": "Information about the last completed processing task",
+          "properties": {
+            "prev_task": {
+              "type": "string",
+              "description": "Identifier of the last successfully completed task in the workflow"
+            },
+            "prev_status_code": {
+              "type": "string",
+              "description": "Status code returned by the last completed task (e.g., 'SUCCESS', 'VALIDATION_ERROR')"
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO 8601 timestamp when the last task was completed"
+            }
+          }
+        },
+        "retries": {
+          "type": "object",
+          "description": "Information about retry attempts for failed processing",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of times processing has been retried"
+            },
+            "last_retry": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO 8601 timestamp of the last retry attempt"
+            }
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "description": "Domain-specific standardized content. For payments, contains ISO20022-compliant message data. Structure varies based on message type",
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional information about the message that aids in processing",
+      "properties": {
+        "format_version": {
+          "type": "string",
+          "description": "Version of the data format used in the data section (e.g., 'ISO20022:2019')"
+        },
+        "type": {
+          "type": "string",
+          "description": "Specific type of message within the chosen format (e.g., 'pacs.008.001.09')"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["real-time", "queued", "scheduled"],
+          "description": "Processing priority level determining how the message should be handled: 'real-time' for immediate processing, 'queued' for batch processing, 'scheduled' for future processing"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of labels for message categorization and filtering"
+        },
+        "flags": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Dynamic flags indicating special processing requirements or states"
+        }
+      }
+    },
+    "auditlog": {
+      "type": "array",
+      "description": "Chronological record of all changes and processing tasks",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "hash", "workflow", "task", "executor", "changes"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp when the audit entry was created"
+          },
+          "hash": {
+            "type": "string",
+            "description": "Cryptographic hash of the message state after changes, ensuring data integrity"
+          },
+          "workflow": {
+            "type": "string",
+            "description": "Identifier of the workflow being executed"
+          },
+          "task": {
+            "type": "string",
+            "description": "Identifier of the specific task within the workflow. Tasks are atomic units of work in the workflow"
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of the processing task or change"
+          },
+          "executor": {
+            "type": "object",
+            "required": ["service", "instance", "version"],
+            "description": "Information about the service that performed the task",
+            "properties": {
+              "service": {
+                "type": "string",
+                "description": "Name of the service that performed the task (e.g., 'payment-enricher', 'validator')"
+              },
+              "instance": {
+                "type": "string",
+                "description": "Unique identifier of the service instance (e.g., container ID, pod name)"
+              },
+              "version": {
+                "type": "string",
+                "description": "Version of the service that performed the task"
+              },
+              "host": {
+                "type": "string",
+                "description": "Hostname or IP address where the service was running"
+              },
+              "region": {
+                "type": "string",
+                "description": "Geographic region or data center where the service was deployed"
+              }
+            }
+          },
+          "changes": {
+            "type": "array",
+            "description": "List of specific changes made during this processing task",
+            "items": {
+              "type": "object",
+              "required": ["field", "type", "timestamp"],
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "description": "JSON path to the changed field (e.g., 'data.creditTransfer.amount')"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["create", "update", "delete"],
+                  "description": "Type of change: 'create' for new fields, 'update' for modifications, 'delete' for removals"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "ISO 8601 timestamp when this specific change was made"
+                },
+                "old_value": {
+                  "type": ["string", "number", "boolean", "object", "array", "null"],
+                  "description": "Previous value of the field before the change (null for create operations)"
+                },
+                "new_value": {
+                  "type": ["string", "number", "boolean", "object", "array", "null"],
+                  "description": "New value of the field after the change (null for delete operations)"
+                },
+                "reason": {
+                  "type": "string",
+                  "description": "Explanation of why the change was made"
+                },
+                "rule_id": {
+                  "type": "string",
+                  "description": "Identifier of the business rule that triggered this change"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<h2 id="example-fednow-credit-transfer"><a class="header" href="#example-fednow-credit-transfer">Example: FedNow Credit Transfer</a></h2>
+<p>This example demonstrates how the structure is used for a FedNow credit transfer:</p>
+<pre><code class="language-json">{
+  "id": "MSG-20241029-FEDNOW-123456",
+  "payload": {
+    "type": "inline",
+    "content": {
+      "creditTransferMessage": {
+        "messageId": "BFFF/120928-FEDNOW/123456",
+        "creditorAccount": "9876543210",
+        "amount": "1000.00",
+        "debtorAccount": "1234567890"
+      }
+    },
+    "format": "JSON",
+    "encoding": "UTF-8",
+    "size": 428
+  },
+  "tenant": "BANK_USA_001",
+  "origin": {
+    "system": "CORE_BANKING",
+    "channel": "API",
+    "timestamp": "2024-10-29T14:30:00.000Z"
+  },
+  "processing": {
+    "status": "processing",
+    "workflow_id": "FEDNOW_CREDIT_TRANSFER_V1",
+    "progress": {
+      "prev_task": "validation",
+      "prev_status_code": "SUCCESS",
+      "timestamp": "2024-10-29T14:30:01.523Z"
+    },
+    "retries": {
+      "count": 0,
+      "last_retry": null
+    }
+  },
+  "data": {
+    "messageType": "pacs.008.001.09",
+    "businessMessageIdentifier": "BFFF/120928-FEDNOW/123456",
+    "creditTransferTransaction": {
+      "paymentIdentification": {
+        "instructionIdentification": "INSTR-ID-123456",
+        "endToEndIdentification": "E2E-REF-123456",
+        "transactionIdentification": "TXID-123456"
+      },
+      "paymentTypeInformation": {
+        "localInstrument": "STANDARD",
+        "categoryPurpose": {
+          "code": "CASH"
+        }
+      },
+      "interbankSettlementAmount": {
+        "amount": "1000.00",
+        "currency": "USD"
+      },
+      "chargeBearer": "SLEV",
+      "debtor": {
+        "name": "John Smith",
+        "identification": {
+          "privateIdentification": {
+            "other": {
+              "identification": "DEB-123456"
+            }
+          }
+        },
+        "contactDetails": {
+          "emailAddress": "john.smith@email.com"
+        }
+      },
+      "debtorAccount": {
+        "identification": {
+          "accountNumber": "1234567890"
+        },
+        "type": "CACC"
+      },
+      "debtorAgent": {
+        "financialInstitutionIdentification": {
+          "clearingSystemIdentification": {
+            "code": "USABA"
+          },
+          "clearingSystemMemberIdentification": "021000021"
+        }
+      },
+      "creditor": {
+        "name": "Jane Doe",
+        "identification": {
+          "privateIdentification": {
+            "other": {
+              "identification": "CRED-789012"
+            }
+          }
+        }
+      },
+      "creditorAccount": {
+        "identification": {
+          "accountNumber": "9876543210"
+        },
+        "type": "CACC"
+      },
+      "creditorAgent": {
+        "financialInstitutionIdentification": {
+          "clearingSystemIdentification": {
+            "code": "USABA"
+          },
+          "clearingSystemMemberIdentification": "021000022"
+        }
+      },
+      "purpose": {
+        "code": "CASH"
+      },
+      "remittanceInformation": {
+        "unstructured": "Invoice payment #INV-2024-001"
+      },
+      "settlementInformation": {
+        "settlementMethod": "CLRG",
+        "clearingSystem": "FEDNOW"
+      }
+    }
+  },
+  "metadata": {
+    "format_version": "ISO20022:2019",
+    "type": "credit_transfer",
+    "priority": "real-time",
+    "tags": ["fednow", "domestic", "credit_transfer"],
+    "flags": {
+      "requires_compliance_check": true,
+      "is_cross_border": false,
+      "requires_funds_check": true
+    }
+  },
+  "auditlog": [
+    {
+      "timestamp": "2024-10-29T14:30:00.100Z",
+      "hash": "abc123def456",
+      "workflow": "FEDNOW_CREDIT_TRANSFER_V1",
+      "task": "reception",
+      "description": "Message received and initial parsing completed",
+      "executor": {
+        "service": "message-receiver",
+        "instance": "receiver-pod-123",
+        "version": "1.0.0",
+        "host": "receiver-node-east-1",
+        "region": "us-east-1"
+      },
+      "changes": [
+        {
+          "field": "processing.status",
+          "type": "create",
+          "timestamp": "2024-10-29T14:30:00.100Z",
+          "old_value": null,
+          "new_value": "received",
+          "reason": "Initial message reception",
+          "rule_id": "INIT_001"
+        }
+      ]
+    },
+    {
+      "timestamp": "2024-10-29T14:30:00.500Z",
+      "hash": "def456ghi789",
+      "workflow": "FEDNOW_CREDIT_TRANSFER_V1",
+      "task": "enrichment",
+      "description": "Enriched payment with customer and compliance information",
+      "executor": {
+        "service": "payment-enricher",
+        "instance": "enricher-pod-456",
+        "version": "1.0.0",
+        "host": "enricher-node-east-2",
+        "region": "us-east-1"
+      },
+      "changes": [
+        {
+          "field": "data.creditTransferTransaction.debtor.contactDetails",
+          "type": "create",
+          "timestamp": "2024-10-29T14:30:00.500Z",
+          "old_value": null,
+          "new_value": {
+            "emailAddress": "john.smith@email.com"
+          },
+          "reason": "Added customer contact details",
+          "rule_id": "ENRICH_001"
+        }
+      ]
+    },
+    {
+      "timestamp": "2024-10-29T14:30:01.523Z",
+      "hash": "ghi789jkl012",
+      "workflow": "FEDNOW_CREDIT_TRANSFER_V1",
+      "task": "validation",
+      "description": "Validated message against FedNow requirements",
+      "executor": {
+        "service": "payment-validator",
+        "instance": "validator-pod-789",
+        "version": "1.0.0",
+        "host": "validator-node-east-1",
+        "region": "us-east-1"
+      },
+      "changes": [
+        {
+          "field": "processing.status",
+          "type": "update",
+          "timestamp": "2024-10-29T14:30:01.523Z",
+          "old_value": "received",
+          "new_value": "processing",
+          "reason": "Validation successful, proceeding with processing",
+          "rule_id": "VAL_001"
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="key-features"><a class="header" href="#key-features">Key Features</a></h2>
+<ol>
+<li>
+<p><strong>Flexibility</strong></p>
+<ul>
+<li>Adaptable to different message standards</li>
+<li>Supports multiple use cases</li>
+<li>Extensible structure</li>
+</ul>
+</li>
+<li>
+<p><strong>Traceability</strong></p>
+<ul>
+<li>Complete audit trail</li>
+<li>Change tracking</li>
+<li>Processing history</li>
+</ul>
+</li>
+<li>
+<p><strong>Processing Control</strong></p>
+<ul>
+<li>Workflow management</li>
+<li>Status tracking</li>
+<li>Error handling</li>
+</ul>
+</li>
+<li>
+<p><strong>Multi-tenant Support</strong></p>
+<ul>
+<li>Tenant isolation</li>
+<li>Domain separation</li>
+<li>Configuration flexibility</li>
+</ul>
+</li>
+</ol>
+<h2 id="implementation-considerations"><a class="header" href="#implementation-considerations">Implementation Considerations</a></h2>
+<ol>
+<li>
+<p><strong>Message Processing</strong></p>
+<ul>
+<li>Messages are processed according to their workflow definitions</li>
+<li>Status updates reflect processing progress</li>
+<li>Audit logs maintain processing history</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Handling</strong></p>
+<ul>
+<li>Original payload is preserved</li>
+<li>Transformations are tracked</li>
+<li>Changes are audited</li>
+</ul>
+</li>
+<li>
+<p><strong>Security</strong></p>
+<ul>
+<li>Multi-tenant isolation</li>
+<li>Audit trail integrity</li>
+<li>Access control support</li>
+</ul>
+</li>
+</ol>
+<p>The Message Structure provides a robust foundation for processing various types of messages while maintaining the flexibility to adapt to different standards and domains. Its clear separation between core processing fields and domain-specific content enables effective multi-tenant, multi-domain operations within the Open Payments platform.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="error-handling-and-auditing-details"><a class="header" href="#error-handling-and-auditing-details">Error Handling and Auditing Details</a></h2>
+<h3 id="error-handling"><a class="header" href="#error-handling">Error Handling</a></h3>
+<ul>
+<li>
+<p><strong>Retry Logic</strong>:</p>
+<ul>
+<li>Automatically retries processing steps that fail due to transient issues</li>
+<li>Handles temporary network outages and service unavailability</li>
+<li>Configurable retry attempts and intervals</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Queue Management</strong>:</p>
+<ul>
+<li>Dedicated holding area for messages that fail maximum retries</li>
+<li>Supports manual review and intervention</li>
+<li>Maintains complete processing history</li>
+<li>Enables reprocessing after issue resolution</li>
+</ul>
+</li>
+</ul>
+<h3 id="audit-trail"><a class="header" href="#audit-trail">Audit Trail</a></h3>
+<ul>
+<li><strong>Comprehensive Logging</strong>:
+<ul>
+<li>Timestamps for each processing stage</li>
+<li>Record of completed processing steps</li>
+<li>Documentation of encountered errors</li>
+<li>Tracking of data transformations</li>
+<li>Record of manual interventions</li>
+<li>Original and modified message contents</li>
+</ul>
+</li>
+</ul>
+<h3 id="benefits"><a class="header" href="#benefits">Benefits</a></h3>
+<ul>
+<li>Complete message traceability</li>
+<li>Rapid issue identification and resolution</li>
+<li>Compliance with record-keeping requirements</li>
+<li>Transaction integrity maintenance</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="error-handling-and-auditing-details-1"><a class="header" href="#error-handling-and-auditing-details-1">Error Handling and Auditing Details</a></h2>
+<h3 id="error-handling-1"><a class="header" href="#error-handling-1">Error Handling</a></h3>
+<ul>
+<li>
+<p><strong>Retry Logic</strong>:</p>
+<ul>
+<li>Automatically retries processing steps that fail due to transient issues</li>
+<li>Handles temporary network outages and service unavailability</li>
+<li>Configurable retry attempts and intervals</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Queue Management</strong>:</p>
+<ul>
+<li>Dedicated holding area for messages that fail maximum retries</li>
+<li>Supports manual review and intervention</li>
+<li>Maintains complete processing history</li>
+<li>Enables reprocessing after issue resolution</li>
+</ul>
+</li>
+</ul>
+<h3 id="audit-trail-1"><a class="header" href="#audit-trail-1">Audit Trail</a></h3>
+<ul>
+<li><strong>Comprehensive Logging</strong>:
+<ul>
+<li>Timestamps for each processing stage</li>
+<li>Record of completed processing steps</li>
+<li>Documentation of encountered errors</li>
+<li>Tracking of data transformations</li>
+<li>Record of manual interventions</li>
+<li>Original and modified message contents</li>
+</ul>
+</li>
+</ul>
+<h3 id="benefits-1"><a class="header" href="#benefits-1">Benefits</a></h3>
+<ul>
+<li>Complete message traceability</li>
+<li>Rapid issue identification and resolution</li>
+<li>Compliance with record-keeping requirements</li>
+<li>Transaction integrity maintenance</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="core-strengths"><a class="header" href="#core-strengths">Core Strengths</a></h2>
+<p>The Message Processor's robust architecture ensures efficient, accurate, and secure handling of payment messages through several key design principles:</p>
+<h3 id="high-performance-architecture"><a class="header" href="#high-performance-architecture">High-Performance Architecture</a></h3>
+<ul>
+<li><strong>Horizontal Scalability</strong>: The architecture supports dynamic scaling by adding processing units to handle increased loads</li>
+<li><strong>Fault Tolerance</strong>: Redundant systems and automated failover mechanisms ensure continuous operation even in the event of component failures</li>
+<li><strong>Distributed Processing</strong>: Workloads can be distributed across multiple processing nodes, enabling organizations to optimize their resource utilization based on their specific needs and infrastructure</li>
+</ul>
+<h3 id="advanced-system-features"><a class="header" href="#advanced-system-features">Advanced System Features</a></h3>
+<ul>
+<li><strong>Real-time Monitoring</strong>: Comprehensive dashboard providing visibility into system health, performance metrics, and transaction status</li>
+<li><strong>Smart Error Handling</strong>: Sophisticated retry mechanisms with configurable policies for different error scenarios</li>
+<li><strong>Comprehensive Logging</strong>: Detailed audit trails for every transaction stage, supporting both operational and compliance requirements</li>
+</ul>
+<p>This architectural foundation delivers:</p>
+<ul>
+<li>Processing capacity that scales with additional nodes</li>
+<li>Continuous operation capabilities</li>
+<li>Automatic recovery from network or component failures</li>
+<li>Full transaction traceability and replay capabilities</li>
+</ul>
+<p>The system's flexibility enables financial institutions to rapidly adapt to new payment types, regulatory changes, and technological advancements while maintaining seamless interoperability across platforms.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="messages-library"><a class="header" href="#messages-library">Messages Library</a></h1>
+<p><a href="https://github.com/Open-Payments/messages"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" /></a></p>
+<p>The library provides tools for parsing, validating, and transforming financial messages, with support for ISO 20022 and FedNow message formats. The library is designed to help developers integrate financial message handling into their Rust applications, using serde for (de)serialization.</p>
+<hr />
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<ul>
+<li><strong>ISO 20022 Support</strong>: Comprehensive support for key ISO 20022 payment message types.</li>
+<li><strong>FedNow Message</strong>: Full support for FedNow message formats.</li>
+<li><strong>(De)serialization</strong>: Using serde for easy conversion between XML and JSON.</li>
+<li><strong>Extensibility</strong>: Easily extendable to support additional message types or custom formats.</li>
+</ul>
+<h3 id="supported-messages"><a class="header" href="#supported-messages">Supported Messages</a></h3>
+<p>The library supports a variety of financial message formats from both ISO 20022 and FedNow, covering key areas of the payment lifecycle.</p>
+<h4 id="iso-20022-messages"><a class="header" href="#iso-20022-messages">ISO 20022 Messages</a></h4>
+<ul>
+<li><strong>pacs</strong>: Payment Clearing and Settlement</li>
+<li><strong>pain</strong>: Payment Initiation</li>
+<li><strong>admi</strong>: Administrative messages</li>
+<li><strong>auth</strong>: Authorization messages</li>
+<li><strong>camt</strong>: Cash Management</li>
+<li><strong>reda</strong>: Reference Data</li>
+<li><strong>remt</strong>: Remittance Advice</li>
+<li><strong>acmt</strong>: Account Management</li>
+<li><strong>head</strong>: Header messages</li>
+</ul>
+<h4 id="fednow-messages"><a class="header" href="#fednow-messages">FedNow Messages</a></h4>
+<ul>
+<li><strong>Customer Credit Transfer</strong></li>
+<li><strong>Payment Status Report</strong></li>
+<li><strong>Payment Return</strong></li>
+</ul>
+<hr />
+<p>This extensive support for ISO 20022 messages enables comprehensive coverage of the payment message lifecycle, including administrative processes, investigations, status reports, and transaction instructions.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
+<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
+<p>You’ll need the following installed to build and use this library:</p>
+<ul>
+<li><a href="https://www.rust-lang.org/tools/install">Rust</a> (latest stable version)</li>
+<li><a href="https://doc.rust-lang.org/cargo/getting-started/installation.html">Cargo</a> (Rust package manager)</li>
+</ul>
+<h3 id="installation"><a class="header" href="#installation">Installation</a></h3>
+<p>Add the following to your <code>Cargo.toml</code> to start using the library in your Rust project:</p>
+<pre><code class="language-toml">[dependencies]
+# This dependency includes support for the entire ISO 20022 message formats.
+# The "payments" feature enables various ISO 20022 message categories, such as pacs, pain, camt, etc.
+# If you only need specific message types, you can enable just those features (e.g., "pacs", "pain").
+open-payments-iso20022 = { version = "1.0.1", features = ["payments"] }
+
+# This dependency provides support for the FedNow message formats.
+# You get full support for parsing and serializing FedNow messages out of the box.
+open-payments-fednow = "1.0.1"
+</code></pre>
+<h3 id="features-1"><a class="header" href="#features-1">Features</a></h3>
+<p>The ISO20022 message library <code>open-payments-iso20022</code> provides several features to allow you to include only the message types relevant to your use case. Here’s a breakdown of the available features:</p>
+<pre><code class="language-toml">[features]
+default = ["head"]  # Default feature, includes the basic header message.
+iso20022 = ["payments"]  # Enables all payment-related ISO 20022 messages.
+payments = ["acmt", "admi", "auth", "camt", "head", "pacs", "pain", "reda", "remt"]  # Includes all payments-related ISO 20022 message types.
+
+# Individual ISO 20022 message modules:
+acmt = ["open-payments-iso20022-acmt"]  # Account Management messages
+admi = ["open-payments-iso20022-admi"]  # Administrative messages
+auth = ["open-payments-iso20022-auth"]  # Authorization messages
+camt = ["open-payments-iso20022-camt"]  # Cash Management messages
+head = ["open-payments-iso20022-head"]  # Basic Header messages (default)
+pacs = ["open-payments-iso20022-pacs"]  # Payment Clearing and Settlement messages
+pain = ["open-payments-iso20022-pain"]  # Payment Initiation messages
+reda = ["open-payments-iso20022-reda"]  # Reference Data messages
+remt = ["open-payments-iso20022-remt"]  # Remittance Advice messages
+</code></pre>
+<p>By configuring the features, you can optimize the library for your specific message requirements, minimizing unnecessary dependencies.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage"><a class="header" href="#usage">Usage</a></h1>
+<p><strong>Example: Creating an ISO 20022 Message Object</strong></p>
+<pre><code class="language-rust noplayground">use open_payments_iso20022::document::Document;
+use open_payments_iso20022_admi::admi_002_001_01::Admi00200101;
+
+fn main() {
+    let doc = Document::Admi00200101(Box::new(Admi00200101::default()));
+
+    println!("{:?}", doc)
+}</code></pre>
+<p><strong>Example: Creating a FedNow Message Object</strong></p>
+<p>Similarly, here’s an example of how to create a FedNow message object:</p>
+<pre><code class="language-rust noplayground">use open_payments_fednow::document::Document;
+use open_payments_fednow::iso::pacs_008_001_08::FIToFICustomerCreditTransferV08;
+
+fn main() {
+    let doc = Document::FIToFICustomerCreditTransferV08(Box::new(FIToFICustomerCreditTransferV08::default()));
+
+    println!("{:?}", doc)
+}</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="messages-api"><a class="header" href="#messages-api">Messages API</a></h1>
+<p><a href="https://github.com/Open-Payments/messages-api"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" /></a></p>
+<p>The Messages API is designed to parse and validate financial payment messages. This API supports the FedNow &amp; ISO20022 format, applying validation rules from the official XSD schema files. The API is available for both public and private use, with a ready-to-deploy Docker image available on Docker Hub.</p>
+<ul>
+<li><strong>Repository</strong>: <a href="https://github.com/Open-Payments/messages-api">Open Payments Messages API</a></li>
+<li><strong>API Documentation</strong>: <a href="https://www.postman.com/openpaymentsapi/open-payments/overview">Postman Collection</a></li>
+</ul>
+<hr />
+<h2 id="api-endpoint"><a class="header" href="#api-endpoint">API Endpoint:</a></h2>
+<p><code>POST /validate</code></p>
+<h2 id="description"><a class="header" href="#description">Description:</a></h2>
+<p>This endpoint accepts an XML payment message, identifies the message format (e.g., pacs.008, pacs.009), and performs the following actions:</p>
+<ol>
+<li><strong>Parsing</strong>: Converts the XML payment message into an internal object model.</li>
+<li><strong>Validation</strong>: Applies schema-based validation using the FedNow XSD files.</li>
+<li><strong>Response</strong>: Converts the parsed message into a JSON object and returns it as the API response.</li>
+</ol>
+<hr />
+<h4 id="additional-features"><a class="header" href="#additional-features"><strong>Additional Features:</strong></a></h4>
+<ul>
+<li><strong>Automatic Format Detection</strong>: The API identifies the message type automatically, so no need to specify the format in the request.</li>
+<li><strong>XSD Validation</strong>: Applies validation rules as defined by the FedNow XSD files.</li>
+<li><strong>JSON Conversion</strong>: Converts valid XML messages to JSON format, making it easier to consume by modern applications.</li>
+</ul>
+<hr />
+<h3 id="api-documentation-and-try-out"><a class="header" href="#api-documentation-and-try-out">API Documentation and Try Out</a></h3>
+<p>Explore the full API documentation and <strong>try out the Validate API</strong> using the Postman Collection. Postman allows you to test the API directly in your browser:</p>
+<ul>
+<li><strong>Postman Collection</strong>: <a href="https://www.postman.com/openpaymentsapi/open-payments/overview">Open Payments Postman Collection</a></li>
+<li><strong>Try it out</strong>: You can use Postman’s “Run in Postman” button to directly test the API instance and see how it works with real data.</li>
+</ul>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-1"><a class="header" href="#installation-1">Installation</a></h1>
+<h2 id="running-a-local-instance"><a class="header" href="#running-a-local-instance">Running a Local Instance:</a></h2>
+<p>To run your own private instance of the Validate API, you can use the Docker image from Docker Hub:</p>
+<p>This will start the API on port <code>8080</code> of your local machine. You can then make POST requests to <code>http://localhost:8080/validate</code>.</p>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage-1"><a class="header" href="#usage-1">Usage</a></h1>
+<h2 id="request"><a class="header" href="#request">Request:</a></h2>
+<ul>
+<li><strong>Method</strong>: <code>POST</code></li>
+<li><strong>Content-Type</strong>: <code>application/xml</code></li>
+<li><strong>Body</strong>: The XML content of the payment message (e.g., pacs.008, pacs.002, etc.).</li>
+</ul>
+<h3 id="example-request"><a class="header" href="#example-request">Example Request:</a></h3>
+<pre><code class="language-xml">&lt;FIToFICstmrCdtTrf&gt;
+  &lt;!-- Example XML content based on FedNow ISO20022 format --&gt;
+&lt;/FIToFICstmrCdtTrf&gt;
+</code></pre>
+<hr />
+<h2 id="response"><a class="header" href="#response">Response:</a></h2>
+<ul>
+<li><strong>Content-Type</strong>: <code>application/json</code></li>
+<li><strong>Body</strong>: The parsed payment message in JSON format, with details of the validation status.</li>
+</ul>
+<h3 id="example-successful-response"><a class="header" href="#example-successful-response">Example Successful Response:</a></h3>
+<pre><code class="language-json">{
+  "status": "success",
+  "message": {
+    "FIToFICstmrCdtTrf": {
+      "GrpHdr": {
+        "MsgId": "ABC123456",
+        "CreDtTm": "2024-10-01T12:00:00Z"
+      },
+      ...
+    }
+  }
+}
+</code></pre>
+<h3 id="example-validation-error-response"><a class="header" href="#example-validation-error-response">Example Validation Error Response:</a></h3>
+<pre><code class="language-json">{
+  "status": "error",
+  "errors": [
+    {
+      "field": "GrpHdr.MsgId",
+      "message": "Message ID is missing or invalid"
+    }
+  ]
+}
+</code></pre>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><h1 id="datamorph-rs"><a class="header" href="#datamorph-rs">datamorph-rs</a></h1>
+<p>A powerful Rust library for transforming data structures using declarative specifications. Built for performance, type safety, and extensibility.</p>
+<h2 id="overview-2"><a class="header" href="#overview-2">Overview</a></h2>
+<p><code>datamorph-rs</code> allows you to transform data structures using simple JSON-based specifications. It's designed to be easy to use while remaining flexible and extensible.</p>
+<h2 id="features-2"><a class="header" href="#features-2">Features</a></h2>
+<ul>
+<li>🚀 Simple, declarative JSON transformation specifications</li>
+<li>🔧 Built-in transformation functions</li>
+<li>🎯 Type-safe transformations</li>
+<li>🔄 Support for multiple transformations</li>
+<li>⚡ Zero-copy where possible</li>
+<li>📝 Clear error messages</li>
+</ul>
+<h2 id="quick-start"><a class="header" href="#quick-start">Quick Start</a></h2>
+<p>Add to your <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[dependencies]
+datamorph-rs = "0.1.0"
+</code></pre>
+<p>Basic example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use datamorph_rs::Datamorph;
+use serde_json::json;
+
+// Define your transformation spec
+let spec = r#"{
+    "mappings": {
+        "name": {
+            "target": "fullName",
+            "transform": "uppercase"
+        }
+    }
+}"#;
+
+// Create transformer
+let transformer = Datamorph::from_json(spec)?;
+
+// Transform data
+let input = json!({ "name": "john doe" });
+let result: serde_json::Value = transformer.transform(input)?;
+
+assert_eq!(result["fullName"], "JOHN DOE");
+<span class="boring">}</span></code></pre></pre>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<ul>
+<li><a href="transformation/usage.html">Usage Guide</a> - Detailed usage instructions</li>
+<li><a href="transformation/reference.html">API Reference</a> - Complete API documentation</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage-guide"><a class="header" href="#usage-guide">Usage Guide</a></h1>
+<p>This guide provides detailed instructions for using datamorph-rs in your projects.</p>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ol>
+<li><a href="transformation/usage.html#installation">Installation</a></li>
+<li><a href="transformation/usage.html#basic-usage">Basic Usage</a></li>
+<li><a href="transformation/usage.html#transformation-specifications">Transformation Specifications</a></li>
+<li><a href="transformation/usage.html#built-in-functions">Built-in Functions</a></li>
+<li><a href="transformation/usage.html#error-handling">Error Handling</a></li>
+<li><a href="transformation/usage.html#best-practices">Best Practices</a></li>
+</ol>
+<h2 id="installation-2"><a class="header" href="#installation-2">Installation</a></h2>
+<p>Add datamorph-rs to your project:</p>
+<pre><code class="language-toml">[dependencies]
+datamorph-rs = "0.1.0"
+</code></pre>
+<h2 id="basic-usage"><a class="header" href="#basic-usage">Basic Usage</a></h2>
+<h3 id="simple-field-transformation"><a class="header" href="#simple-field-transformation">Simple Field Transformation</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use datamorph_rs::Datamorph;
+use serde_json::json;
+
+let spec = r#"{
+    "mappings": {
+        "name": {
+            "target": "fullName",
+            "transform": "uppercase"
+        }
+    }
+}"#;
+
+let input = json!({
+    "name": "john doe"
+});
+
+let transformer = Datamorph::from_json(spec)?;
+let result: serde_json::Value = transformer.transform(input)?;
+<span class="boring">}</span></code></pre></pre>
+<h3 id="multiple-transformations"><a class="header" href="#multiple-transformations">Multiple Transformations</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let spec = r#"{
+    "mappings": {
+        "description": {
+            "target": "summary",
+            "transform": ["trim", "uppercase"]
+        }
+    }
+}"#;
+<span class="boring">}</span></code></pre></pre>
+<h2 id="transformation-specifications"><a class="header" href="#transformation-specifications">Transformation Specifications</a></h2>
+<h3 id="basic-structure"><a class="header" href="#basic-structure">Basic Structure</a></h3>
+<pre><code class="language-json">{
+    "mappings": {
+        "sourceField": {
+            "target": "targetField",
+            "transform": "transformationFunction"
+        }
+    }
+}
+</code></pre>
+<h3 id="multiple-transformations-1"><a class="header" href="#multiple-transformations-1">Multiple Transformations</a></h3>
+<pre><code class="language-json">{
+    "mappings": {
+        "sourceField": {
+            "target": "targetField",
+            "transform": ["function1", "function2"]
+        }
+    }
+}
+</code></pre>
+<h2 id="built-in-functions"><a class="header" href="#built-in-functions">Built-in Functions</a></h2>
+<h3 id="string-transformations"><a class="header" href="#string-transformations">String Transformations</a></h3>
+<ul>
+<li><code>uppercase</code>: Convert string to uppercase</li>
+<li><code>lowercase</code>: Convert string to lowercase</li>
+<li><code>toString</code>: Convert value to string</li>
+</ul>
+<h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
+<pre><code class="language-json">{
+    "mappings": {
+        "name": {
+            "target": "upperName",
+            "transform": "uppercase"
+        },
+        "age": {
+            "target": "ageString",
+            "transform": "toString"
+        }
+    }
+}
+</code></pre>
+<h2 id="error-handling-2"><a class="header" href="#error-handling-2">Error Handling</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use datamorph_rs::{Datamorph, Error};
+
+match Datamorph::from_json(spec) {
+    Ok(transformer) =&gt; {
+        match transformer.transform(input) {
+            Ok(result) =&gt; println!("Success: {}", result),
+            Err(Error::TransformError(msg)) =&gt; eprintln!("Transform failed: {}", msg),
+            Err(e) =&gt; eprintln!("Other error: {}", e),
+        }
+    },
+    Err(e) =&gt; eprintln!("Failed to parse spec: {}", e),
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="best-practices-1"><a class="header" href="#best-practices-1">Best Practices</a></h2>
+<ol>
+<li>
+<p><strong>Specification Organization</strong></p>
+<ul>
+<li>Keep specifications simple and focused</li>
+<li>Use meaningful field names</li>
+<li>Document complex transformations</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling</strong></p>
+<ul>
+<li>Always handle potential errors</li>
+<li>Validate specifications before use</li>
+<li>Log transformation errors</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance</strong></p>
+<ul>
+<li>Minimize number of transformations</li>
+<li>Use appropriate data types</li>
+<li>Consider batch processing for large datasets</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="api-reference"><a class="header" href="#api-reference">API Reference</a></h1>
+<h2 id="core-types"><a class="header" href="#core-types">Core Types</a></h2>
+<h3 id="datamorph"><a class="header" href="#datamorph">Datamorph</a></h3>
+<p>Main entry point for transformations.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct Datamorph {
+    spec: TransformSpec,
+}
+
+impl Datamorph {
+    /// Create a new instance from JSON specification
+    pub fn from_json(spec: &amp;str) -&gt; Result&lt;Self&gt;
+
+    /// Transform input data according to specification
+    pub fn transform&lt;T, U&gt;(&amp;self, input: T) -&gt; Result&lt;U&gt;
+    where
+        T: Serialize,
+        U: DeserializeOwned
+}
+<span class="boring">}</span></code></pre></pre>
+<h3 id="transformspec"><a class="header" href="#transformspec">TransformSpec</a></h3>
+<p>Defines the transformation specification.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct TransformSpec {
+    pub mappings: HashMap&lt;String, Mapping&gt;,
+}
+
+impl TransformSpec {
+    /// Parse from JSON string
+    pub fn from_json(json: &amp;str) -&gt; Result&lt;Self&gt;
+
+    /// Transform a value
+    pub fn transform(&amp;self, input: &amp;Value) -&gt; Result&lt;Value&gt;
+}
+<span class="boring">}</span></code></pre></pre>
+<h3 id="error-types"><a class="header" href="#error-types">Error Types</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub enum Error {
+    /// Failed to parse specification
+    SpecParseError(String),
+
+    /// Error during transformation
+    TransformError(String),
+
+    /// JSON serialization/deserialization error
+    JsonError(serde_json::Error),
+
+    /// Other errors
+    Other(String),
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="specification-format"><a class="header" href="#specification-format">Specification Format</a></h2>
+<h3 id="basic-specification"><a class="header" href="#basic-specification">Basic Specification</a></h3>
+<pre><code class="language-json">{
+    "mappings": {
+        "sourceField": {
+            "target": "targetField",
+            "transform": "transformFunction"
+        }
+    }
+}
+</code></pre>
+<h3 id="multiple-transformations-2"><a class="header" href="#multiple-transformations-2">Multiple Transformations</a></h3>
+<pre><code class="language-json">{
+    "mappings": {
+        "sourceField": {
+            "target": "targetField",
+            "transform": ["function1", "function2"]
+        }
+    }
+}
+</code></pre>
+<h2 id="built-in-functions-1"><a class="header" href="#built-in-functions-1">Built-in Functions</a></h2>
+<h3 id="string-functions"><a class="header" href="#string-functions">String Functions</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Function</th><th>Description</th><th>Input Type</th><th>Output Type</th></tr></thead><tbody>
+<tr><td>uppercase</td><td>Convert to uppercase</td><td>String</td><td>String</td></tr>
+<tr><td>lowercase</td><td>Convert to lowercase</td><td>String</td><td>String</td></tr>
+<tr><td>toString</td><td>Convert value to string</td><td>Any</td><td>String</td></tr>
+</tbody></table>
+</div>
+<h2 id="examples-1"><a class="header" href="#examples-1">Examples</a></h2>
+<h3 id="basic-transform"><a class="header" href="#basic-transform">Basic Transform</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use datamorph_rs::Datamorph;
+use serde_json::json;
+
+let spec = r#"{
+    "mappings": {
+        "name": {
+            "target": "fullName",
+            "transform": "uppercase"
+        },
+        "age": {
+            "target": "userAge",
+            "transform": "toString"
+        }
+    }
+}"#;
+
+let input = json!({
+    "name": "john doe",
+    "age": 30
+});
+
+let transformer = Datamorph::from_json(spec)?;
+let result: serde_json::Value = transformer.transform(input)?;
+
+assert_eq!(result["fullName"], "JOHN DOE");
+assert_eq!(result["userAge"], "30");
+<span class="boring">}</span></code></pre></pre>
+<h3 id="error-handling-3"><a class="header" href="#error-handling-3">Error Handling</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use datamorph_rs::{Datamorph, Error};
+
+let spec = r#"{
+    "mappings": {
+        "age": {
+            "target": "userAge",
+            "transform": "invalidFunction"
+        }
+    }
+}"#;
+
+match Datamorph::from_json(spec) {
+    Ok(transformer) =&gt; {
+        let input = json!({ "age": 30 });
+        match transformer.transform(input) {
+            Ok(result) =&gt; println!("Success: {}", result),
+            Err(e) =&gt; eprintln!("Transform error: {}", e),
+        }
+    },
+    Err(e) =&gt; eprintln!("Spec parse error: {}", e),
+}
+<span class="boring">}</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="enrichr-rs-"><a class="header" href="#enrichr-rs-">enrichr-rs 📦</a></h1>
+<p>A derive macro to enrich Rust structs using declarative transformation specs.</p>
+<h2 id="overview-3"><a class="header" href="#overview-3">Overview</a></h2>
+<p><code>enrichr-rs</code> provides a simple yet powerful way to enrich Rust structs using JSON path mapping specifications. It enables declarative transformation of data from one structure to another through a derive macro, making it ideal for data enrichment, ETL processes, and API response handling.</p>
+<h2 id="key-features-1"><a class="header" href="#key-features-1">Key Features</a></h2>
+<ul>
+<li>✨ Derive macro for automatic implementation</li>
+<li>🗺️ JSON path-based field mapping</li>
+<li>🎯 Type-safe transformations</li>
+<li>⚡ Zero-copy when possible</li>
+<li>🛡️ Comprehensive error handling</li>
+<li>📝 Clear validation messages</li>
+</ul>
+<h2 id="quick-start-1"><a class="header" href="#quick-start-1">Quick Start</a></h2>
+<p>Add to your <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[dependencies]
+enrichr = "0.1.0"
+</code></pre>
+<p>Basic usage:</p>
+<pre><pre class="playground"><code class="language-rust">use enrichr::Enrichable;
+use serde::Deserialize;
+
+#[derive(Enrichable, Default, Deserialize)]
+struct User {
+    name: String,
+    age: u32,
+}
+
+fn main() -&gt; Result&lt;(), Error&gt; {
+    let data = HashMap::from([
+        ("user_data", json!({
+            "full_name": "John Doe",
+            "details": { "age": 30 }
+        }))
+    ]);
+
+    let spec = r#"{
+        "name": "$.user_data.full_name",
+        "age": "$.user_data.details.age"
+    }"#;
+
+    let mut user = User::default();
+    user.enrich(&amp;data, spec)?;
+    
+    assert_eq!(user.name, "John Doe");
+    assert_eq!(user.age, 30);
+    Ok(())
+}</code></pre></pre>
+<h2 id="documentation-1"><a class="header" href="#documentation-1">Documentation</a></h2>
+<ul>
+<li><a href="enrichr/./usage.html">Usage Guide</a> - Detailed examples and use cases</li>
+<li><a href="enrichr/./errorhandling.html">Error Handling</a> - Comprehensive error handling guide</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage-guide-1"><a class="header" href="#usage-guide-1">Usage Guide</a></h1>
+<p>This guide covers various use cases and patterns for using <code>enrichr-rs</code>.</p>
+<h2 id="table-of-contents-1"><a class="header" href="#table-of-contents-1">Table of Contents</a></h2>
+<ul>
+<li><a href="enrichr/usage.html#basic-usage">Basic Usage</a></li>
+<li><a href="enrichr/usage.html#complex-mappings">Complex Mappings</a></li>
+<li><a href="enrichr/usage.html#type-conversions">Type Conversions</a></li>
+<li><a href="enrichr/usage.html#array-handling">Array Handling</a></li>
+<li><a href="enrichr/usage.html#optional-fields">Optional Fields</a></li>
+<li><a href="enrichr/usage.html#custom-types">Custom Types</a></li>
+</ul>
+<h2 id="basic-usage-1"><a class="header" href="#basic-usage-1">Basic Usage</a></h2>
+<p>The simplest use case involves direct field mapping:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Enrichable, Default)]
+struct Person {
+    name: String,
+    age: u32,
+}
+
+let spec = r#"{
+    "name": "$.person.name",
+    "age": "$.person.age"
+}"#;
+<span class="boring">}</span></code></pre></pre>
+<h2 id="complex-mappings"><a class="header" href="#complex-mappings">Complex Mappings</a></h2>
+<h3 id="nested-objects"><a class="header" href="#nested-objects">Nested Objects</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Enrichable, Default)]
+struct Employee {
+    name: String,
+    department: Department,
+}
+
+#[derive(Enrichable, Default)]
+struct Department {
+    id: String,
+    name: String,
+}
+
+let spec = r#"{
+    "name": "$.employee.personal.full_name",
+    "department.id": "$.employee.dept.dept_id",
+    "department.name": "$.employee.dept.dept_name"
+}"#;
+<span class="boring">}</span></code></pre></pre>
+<h3 id="array-handling"><a class="header" href="#array-handling">Array Handling</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Enrichable, Default)]
+struct Team {
+    name: String,
+    members: Vec&lt;String&gt;,
+}
+
+let spec = r#"{
+    "name": "$.team.name",
+    "members": "$.team.member_list[*].name"
+}"#;
+<span class="boring">}</span></code></pre></pre>
+<h3 id="optional-fields"><a class="header" href="#optional-fields">Optional Fields</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Enrichable, Default)]
+struct User {
+    name: String,
+    email: Option&lt;String&gt;,
+}
+
+let spec = r#"{
+    "name": "$.user.name",
+    "email": "$.user.contact.email"
+}"#;
+<span class="boring">}</span></code></pre></pre>
+<h2 id="type-conversions"><a class="header" href="#type-conversions">Type Conversions</a></h2>
+<p>The library handles various type conversions automatically:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Enrichable, Default)]
+struct Metrics {
+    count: u32,           // From number
+    enabled: bool,        // From boolean
+    ratio: f64,          // From number
+    tags: Vec&lt;String&gt;,   // From array
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="custom-types"><a class="header" href="#custom-types">Custom Types</a></h2>
+<p>For custom types that implement <code>Deserialize</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Deserialize)]
+enum Status {
+    Active,
+    Inactive,
+}
+
+#[derive(Enrichable, Default)]
+struct Account {
+    id: String,
+    status: Status,
+}
+<span class="boring">}</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="error-handling-guide"><a class="header" href="#error-handling-guide">Error Handling Guide</a></h1>
+<p><code>enrichr-rs</code> provides detailed error handling to help you identify and fix issues quickly.</p>
+<h2 id="error-types-1"><a class="header" href="#error-types-1">Error Types</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug, Error)]
+pub enum Error {
+    #[error("Invalid enrichment spec: {0}")]
+    InvalidSpec(#[from] serde_json::Error),
+    
+    #[error("Invalid JSON path: {0}")]
+    InvalidPath(String),
+    
+    #[error("Path not found: {0}")]
+    PathNotFound(String),
+    
+    #[error("Type conversion failed for field {field}: {details}")]
+    TypeConversion { field: String, details: String },
+    
+    #[error("Unknown field: {0}")]
+    UnknownField(String),
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="error-scenarios"><a class="header" href="#error-scenarios">Error Scenarios</a></h2>
+<h3 id="invalid-spec"><a class="header" href="#invalid-spec">Invalid Spec</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Invalid JSON in spec
+let spec = r#"{ invalid json }"#;
+assert!(matches!(
+    user.enrich(&amp;data, spec),
+    Err(Error::InvalidSpec(_))
+));
+<span class="boring">}</span></code></pre></pre>
+<h3 id="path-not-found"><a class="header" href="#path-not-found">Path Not Found</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let spec = r#"{
+    "name": "$.user.nonexistent.field"
+}"#;
+assert!(matches!(
+    user.enrich(&amp;data, spec),
+    Err(Error::PathNotFound(_))
+));
+<span class="boring">}</span></code></pre></pre>
+<h3 id="type-conversion"><a class="header" href="#type-conversion">Type Conversion</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Trying to convert string to number
+let spec = r#"{
+    "age": "$.user.name"  // name is a string, age expects u32
+}"#;
+assert!(matches!(
+    user.enrich(&amp;data, spec),
+    Err(Error::TypeConversion { .. })
+));
+<span class="boring">}</span></code></pre></pre>
+<h2 id="error-handling-best-practices"><a class="header" href="#error-handling-best-practices">Error Handling Best Practices</a></h2>
+<ol>
+<li><strong>Granular Error Handling</strong></li>
+</ol>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match user.enrich(&amp;data, spec) {
+    Ok(_) =&gt; println!("Enrichment successful"),
+    Err(Error::PathNotFound(path)) =&gt; {
+        println!("Missing data at path: {}", path);
+        // Handle missing data gracefully
+    },
+    Err(Error::TypeConversion { field, details }) =&gt; {
+        println!("Invalid type for field {}: {}", field, details);
+        // Handle type mismatch
+    },
+    Err(e) =&gt; println!("Other error: {}", e),
+}
+<span class="boring">}</span></code></pre></pre>
+<ol start="2">
+<li><strong>Validation Before Enrichment</strong></li>
+</ol>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Validate spec before processing
+if let Err(e) = validate_spec(spec) {
+    println!("Invalid spec: {}", e);
+    return;
+}
+<span class="boring">}</span></code></pre></pre>
+<ol start="3">
+<li><strong>Logging Integration</strong></li>
+</ol>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use log::{error, warn, info};
+
+match user.enrich(&amp;data, spec) {
+    Ok(_) =&gt; info!("Enrichment successful"),
+    Err(e) =&gt; {
+        error!("Enrichment failed: {}", e);
+        // Additional error handling
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="samplify-library"><a class="header" href="#samplify-library">Samplify Library</a></h1>
+<p><em><strong>A Powerful and Flexible Sample Data Generator for Rust</strong></em>
+<a href="https://github.com/Open-Payments/samplify-rs"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" /></a></p>
+<p><strong>samplify-rs</strong> is a Rust library designed to simplify the process of generating sample data for testing, prototyping, and development purposes. Leveraging Rust’s powerful procedural macros and conditional compilation features, samplify-rs allows you to automatically generate realistic and customizable sample instances of your data structures without polluting your production code.</p>
+<h2 id="features-3"><a class="header" href="#features-3">Features</a></h2>
+<ul>
+<li><strong>Automatic Derivation</strong>: Use the Sampleable derive macro to automatically implement sample generation for your structs and enums.</li>
+<li><strong>Field-Level Customization</strong>: Annotate your fields with attributes to specify value ranges, patterns, choices, lengths, and inclusion probabilities.</li>
+<li><strong>Support for Complex Structures</strong>: Handle deeply nested and complex data structures with optional fields and variations effortlessly.</li>
+<li><strong>Conditional Compilation</strong>: Enable or disable sample generation code using a feature flag, keeping your production builds clean and efficient.</li>
+<li><strong>Extensibility</strong>: Easily integrate with existing projects and extend functionality without modifying original data structures.</li>
+</ul>
+<h2 id="key-benefits"><a class="header" href="#key-benefits">Key Benefits</a></h2>
+<ul>
+<li><strong>Non-Intrusive</strong>: Does not require modification of your production codebase; sample code is conditionally compiled.</li>
+<li><strong>Customizable Data Generation</strong>: Fine-tune how sample data is generated for each field.</li>
+<li><strong>Improved Testing</strong>: Quickly generate realistic test data to enhance your testing processes.</li>
+<li><strong>Lightweight</strong>: Excludes sample generation code from production builds, ensuring optimal performance and binary size.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-3"><a class="header" href="#installation-3">Installation</a></h1>
+<h2 id="getting-started-1"><a class="header" href="#getting-started-1">Getting Started</a></h2>
+<p><strong>Add samplify-rs to Your Project</strong></p>
+<p>Add the following to your Cargo.toml:</p>
+<pre><code class="language-toml">[dependencies]
+samplify-rs = "0.1.0"
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage-2"><a class="header" href="#usage-2">Usage</a></h1>
+<ol>
+<li><strong>Include the macro in your code</strong></li>
+</ol>
+<pre><code class="language-rust noplayground">use samplify_rs::Sampleable;</code></pre>
+<ol start="2">
+<li><strong>Annotate Your Data Structures</strong></li>
+</ol>
+<p>Use <code>#[cfg_attr(feature = "sample", derive(Sampleable))]</code> on your structs and enums.</p>
+<pre><code class="language-rust noplayground">#[derive(Debug, Serialize, Deserialize)]
+#[cfg_attr(feature = "sample", derive(Sampleable))]
+struct PaymentInstruction {
+    currency: String,
+    amount: f64,
+}</code></pre>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<pre><code class="language-rust noplayground">use samplify_rs::Sampleable;
+use serde::{Deserialize, Serialize};
+use serde_json;
+
+#[derive(Debug, Serialize, Deserialize, Sampleable)]
+struct PaymentInstruction {
+    currency: String,
+    amount: f64,
+}
+
+fn main() -&gt; Result&lt;(), String&gt; {
+    let config_json = r#"
+    {
+        "amount": [10.0, 1000.0],
+        "currency": ["USD", "EUR", "GBP"]
+    }
+    "#;
+    let config_map: serde_json::Map&lt;String, serde_json::Value&gt; = serde_json::from_str(config_json).map_err(|e| e.to_string())?;
+    let sample_payment = PaymentInstruction::sample(&amp;config_map)?;
+
+    println!("{:?}", sample_payment);
+
+    Ok(())
+}</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="get-involved"><a class="header" href="#get-involved">Get Involved</a></h1>
+<p>Open Payments is an inclusive project that welcomes contributions from developers, architects, financial institutions, and others passionate about the future of payments. Join us in reshaping how payments are processed and setting a new standard for financial interoperability.</p>
+<p>Explore our repositories and start building with <a href="https://github.com/orgs/Open-Payments/repositories">Open Payments!</a> Together, let’s advance the future of financial technology.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="license"><a class="header" href="#license">License</a></h1>
+<p>Open Payments is released under the Apache License 2.0, a permissive open-source license that allows for wide usage, modification, and distribution of the project. This license provides users with flexibility while requiring preservation of the license notice and disclaimers in derivative works.</p>
+<p>The Apache 2.0 License allows developers, financial institutions, and other users to freely use, modify, and share Open Payments, while maintaining compliance with the terms of the license. Contributions from the community are welcome to improve and expand Open Payments. By contributing to the project, you agree that your contributions will be licensed under the same Apache 2.0 License.</p>
+<p>For further details, please refer to the LICENSE file in our <a href="https://github.com/orgs/Open-Payments/repositories">GitHub repositories</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="get-in-touch-with-the-open-payments-team"><a class="header" href="#get-in-touch-with-the-open-payments-team">Get in Touch with the Open Payments Team!</a></h1>
+<p>Whether you’re exploring Open Payments for your projects, have questions about our open-source platform, or just want to say hello, we’d love to hear from you!</p>
+<p><strong>Email Us:</strong> Reach out to our team at <strong><a href="mailto:team@openpayments.tech">team@openpayments.tech</a></strong>, and we’ll be sure to get back to you as soon as possible.</p>
+<p>Our inbox is open for:</p>
+<ul>
+<li><strong>Feedback &amp; Ideas</strong>: Tell us what you’d like to see or share insights on how you’re using Open Payments.</li>
+<li><strong>Technical Support</strong>: Got a question or need a bit of guidance? We’re here to help!</li>
+<li><strong>Partnership Inquiries</strong>: Interested in working together? Let’s discuss how we can collaborate.</li>
+</ul>
+<p>Feel free to reach out—we’re always excited to connect with users, developers, and anyone passionate about payment solutions. Together, let’s make Open Payments better!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

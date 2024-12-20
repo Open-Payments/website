@@ -1,0 +1,819 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Message structure - Open Payments - Payment Processing Engine for Modern Financial Systems</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Components</li><li class="chapter-item expanded "><a href="../message-processor/index.html"><strong aria-hidden="true">1.</strong> Message Processor</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../message-processor/working-principle.html"><strong aria-hidden="true">1.1.</strong> How the Product Works</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../message-processor/workflow-processor.html"><strong aria-hidden="true">1.1.1.</strong> Workflow Processor</a></li><li class="chapter-item expanded "><a href="../message-processor/workflow-definition.html"><strong aria-hidden="true">1.1.2.</strong> Workflow Definition</a></li><li class="chapter-item expanded "><a href="../message-processor/tech-components.html"><strong aria-hidden="true">1.1.3.</strong> Technical Components</a></li><li class="chapter-item expanded "><a href="../message-processor/message-structure.html" class="active"><strong aria-hidden="true">1.1.4.</strong> Message structure</a></li><li class="chapter-item expanded "><a href="../message-processor/auditing.html"><strong aria-hidden="true">1.1.5.</strong> Error Handling & Auditing Details</a></li></ol></li><li class="chapter-item expanded "><a href="../message-processor/auditing.html"><strong aria-hidden="true">1.2.</strong> Error Handling and Auditing Details</a></li><li class="chapter-item expanded "><a href="../message-processor/core-strengths.html"><strong aria-hidden="true">1.3.</strong> Core Strengths</a></li></ol></li><li class="chapter-item expanded "><a href="../messages-library/index.html"><strong aria-hidden="true">2.</strong> Messages Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../messages-library/installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../messages-library/usage.html"><strong aria-hidden="true">2.2.</strong> Usage</a></li></ol></li><li class="chapter-item expanded "><a href="../messages-api/index.html"><strong aria-hidden="true">3.</strong> Messages API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../messages-api/installation.html"><strong aria-hidden="true">3.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../messages-api/usage.html"><strong aria-hidden="true">3.2.</strong> Usage</a></li></ol></li><li class="chapter-item expanded "><a href="../transformation/index.html"><strong aria-hidden="true">4.</strong> Transformation Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../transformation/usage.html"><strong aria-hidden="true">4.1.</strong> Usage</a></li><li class="chapter-item expanded "><a href="../transformation/reference.html"><strong aria-hidden="true">4.2.</strong> Reference</a></li></ol></li><li class="chapter-item expanded "><a href="../enrichr/index.html"><strong aria-hidden="true">5.</strong> Enrichment Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../enrichr/usage.html"><strong aria-hidden="true">5.1.</strong> Usage</a></li><li class="chapter-item expanded "><a href="../enrichr/errorhandling.html"><strong aria-hidden="true">5.2.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../samplify/index.html"><strong aria-hidden="true">6.</strong> Samplify Library</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../samplify/installation.html"><strong aria-hidden="true">6.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../samplify/usage.html"><strong aria-hidden="true">6.2.</strong> Usage</a></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../contributions.html">Contributions</a></li><li class="chapter-item expanded affix "><a href="../license.html">License</a></li><li class="chapter-item expanded affix "><a href="../contactus.html">Contact Us</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Open Payments - Payment Processing Engine for Modern Financial Systems</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="message-structure"><a class="header" href="#message-structure">Message Structure</a></h1>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>The Message Structure defines the JSON format used by the Open Payments system to handle incoming messages. This structure is designed to be <strong>generic</strong> and <strong>adaptable</strong>, capable of supporting various message standards across different domains.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Generic structure for multiple use cases</li>
+<li>Domain-specific content encapsulation</li>
+<li>Clear separation of concerns</li>
+<li>Support for multi-tenant deployments</li>
+</ul>
+<h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
+<p>The structure is organized into distinct sections:</p>
+<h3 id="root-level-fields"><a class="header" href="#root-level-fields">Root-Level Fields</a></h3>
+<p>Essential fields that the message processor uses for core operations:</p>
+<ul>
+<li><code>id</code>: Unique message identifier</li>
+<li><code>payload</code>: Original message content</li>
+<li><code>tenant</code>: Multi-tenant identifier</li>
+<li><code>origin</code>: Source information</li>
+<li><code>processing</code>: Processing state</li>
+<li><code>auditlog</code>: Processing history</li>
+</ul>
+<h3 id="domain-specific-sections"><a class="header" href="#domain-specific-sections">Domain-Specific Sections</a></h3>
+<ul>
+<li><code>data</code>: Contains the standardized message content (e.g., ISO20022 for payments)</li>
+<li><code>metadata</code>: Additional context and processing instructions</li>
+</ul>
+<h2 id="standards-support"><a class="header" href="#standards-support">Standards Support</a></h2>
+<h3 id="payments-domain"><a class="header" href="#payments-domain">Payments Domain</a></h3>
+<p>When used for payment processing:</p>
+<ul>
+<li><code>data</code> section contains ISO20022-compliant message structures</li>
+<li>Standard formats like pacs.008 for credit transfers are supported</li>
+<li>Maintains compliance with payment scheme requirements</li>
+</ul>
+<h3 id="other-domains"><a class="header" href="#other-domains">Other Domains</a></h3>
+<p>The structure can accommodate various standards:</p>
+<ul>
+<li>Different message formats can be incorporated</li>
+<li>Domain-specific validations can be implemented</li>
+<li>Custom workflows can be defined</li>
+</ul>
+<h2 id="schema-definition"><a class="header" href="#schema-definition">Schema Definition</a></h2>
+<pre><code class="language-json">{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Open Payments Message Schema",
+  "description": "Generic message structure for processing financial and non-financial messages in the Open Payments system",
+  "type": "object",
+  "required": ["id", "payload", "tenant", "origin", "data", "processing"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the message, automatically generated by the system. Used for message tracking and correlation",
+      "pattern": "^[a-zA-Z0-9-_]+$"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Contains the original message content, either directly or as a reference to external storage",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["inline", "file"],
+          "description": "Specifies how the payload is stored: 'inline' for direct content storage, 'file' for external file reference"
+        },
+        "content": {
+          "type": ["string", "object"],
+          "description": "The actual message content when stored inline. Can be a string or structured object depending on the format"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL pointing to the message content when stored externally. Used for large messages or when content needs to be fetched on demand"
+        },
+        "format": {
+          "type": "string",
+          "description": "Format of the message content (e.g., 'XML', 'JSON', 'ISO20022'). Helps in proper parsing and processing"
+        },
+        "encoding": {
+          "type": "string",
+          "description": "Character encoding of the content (e.g., 'UTF-8', 'ASCII'). Essential for proper text handling"
+        },
+        "size": {
+          "type": "integer",
+          "description": "Size of the payload in bytes. Useful for resource management and monitoring"
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "inline" },
+            "content": { "type": ["string", "object"] }
+          },
+          "required": ["type", "content"],
+          "description": "Configuration for inline payload storage"
+        },
+        {
+          "properties": {
+            "type": { "const": "file" },
+            "url": { "type": "string" }
+          },
+          "required": ["type", "url"],
+          "description": "Configuration for file-based payload storage"
+        }
+      ]
+    },
+    "tenant": {
+      "type": "string",
+      "description": "Identifier for the organization or business unit owning this message. Used in multi-tenant deployments for data isolation"
+    },
+    "origin": {
+      "type": "object",
+      "description": "Information about where and when the message originated",
+      "required": ["system", "channel", "timestamp"],
+      "properties": {
+        "system": {
+          "type": "string",
+          "description": "Identifier of the source system that generated the message (e.g., 'CORE_BANKING', 'MOBILE_APP')"
+        },
+        "channel": {
+          "type": "string",
+          "description": "Specific channel within the source system (e.g., 'API', 'WEB', 'BATCH')"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when the message was created in the source system"
+        }
+      }
+    },
+    "processing": {
+      "type": "object",
+      "description": "Current processing state and progress information used by the workflow engine to manage message flow",
+      "required": ["status", "workflow_id"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Domain-specific status indicating the current state of message processing. For payments, typical flow might be: received -&gt; processing -&gt; completed -&gt; acknowledged. Status values are defined by the specific domain implementation",
+          "examples": ["received", "processing", "completed", "acknowledged", "failed", "rejected"]
+        },
+        "workflow_id": {
+          "type": "string",
+          "description": "Identifier of the workflow definition being used to process this message"
+        },
+        "progress": {
+          "type": "object",
+          "description": "Information about the last completed processing task",
+          "properties": {
+            "prev_task": {
+              "type": "string",
+              "description": "Identifier of the last successfully completed task in the workflow"
+            },
+            "prev_status_code": {
+              "type": "string",
+              "description": "Status code returned by the last completed task (e.g., 'SUCCESS', 'VALIDATION_ERROR')"
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO 8601 timestamp when the last task was completed"
+            }
+          }
+        },
+        "retries": {
+          "type": "object",
+          "description": "Information about retry attempts for failed processing",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of times processing has been retried"
+            },
+            "last_retry": {
+              "type": "string",
+              "format": "date-time",
+              "description": "ISO 8601 timestamp of the last retry attempt"
+            }
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "description": "Domain-specific standardized content. For payments, contains ISO20022-compliant message data. Structure varies based on message type",
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional information about the message that aids in processing",
+      "properties": {
+        "format_version": {
+          "type": "string",
+          "description": "Version of the data format used in the data section (e.g., 'ISO20022:2019')"
+        },
+        "type": {
+          "type": "string",
+          "description": "Specific type of message within the chosen format (e.g., 'pacs.008.001.09')"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["real-time", "queued", "scheduled"],
+          "description": "Processing priority level determining how the message should be handled: 'real-time' for immediate processing, 'queued' for batch processing, 'scheduled' for future processing"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of labels for message categorization and filtering"
+        },
+        "flags": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Dynamic flags indicating special processing requirements or states"
+        }
+      }
+    },
+    "auditlog": {
+      "type": "array",
+      "description": "Chronological record of all changes and processing tasks",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "hash", "workflow", "task", "executor", "changes"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp when the audit entry was created"
+          },
+          "hash": {
+            "type": "string",
+            "description": "Cryptographic hash of the message state after changes, ensuring data integrity"
+          },
+          "workflow": {
+            "type": "string",
+            "description": "Identifier of the workflow being executed"
+          },
+          "task": {
+            "type": "string",
+            "description": "Identifier of the specific task within the workflow. Tasks are atomic units of work in the workflow"
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of the processing task or change"
+          },
+          "executor": {
+            "type": "object",
+            "required": ["service", "instance", "version"],
+            "description": "Information about the service that performed the task",
+            "properties": {
+              "service": {
+                "type": "string",
+                "description": "Name of the service that performed the task (e.g., 'payment-enricher', 'validator')"
+              },
+              "instance": {
+                "type": "string",
+                "description": "Unique identifier of the service instance (e.g., container ID, pod name)"
+              },
+              "version": {
+                "type": "string",
+                "description": "Version of the service that performed the task"
+              },
+              "host": {
+                "type": "string",
+                "description": "Hostname or IP address where the service was running"
+              },
+              "region": {
+                "type": "string",
+                "description": "Geographic region or data center where the service was deployed"
+              }
+            }
+          },
+          "changes": {
+            "type": "array",
+            "description": "List of specific changes made during this processing task",
+            "items": {
+              "type": "object",
+              "required": ["field", "type", "timestamp"],
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "description": "JSON path to the changed field (e.g., 'data.creditTransfer.amount')"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["create", "update", "delete"],
+                  "description": "Type of change: 'create' for new fields, 'update' for modifications, 'delete' for removals"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "ISO 8601 timestamp when this specific change was made"
+                },
+                "old_value": {
+                  "type": ["string", "number", "boolean", "object", "array", "null"],
+                  "description": "Previous value of the field before the change (null for create operations)"
+                },
+                "new_value": {
+                  "type": ["string", "number", "boolean", "object", "array", "null"],
+                  "description": "New value of the field after the change (null for delete operations)"
+                },
+                "reason": {
+                  "type": "string",
+                  "description": "Explanation of why the change was made"
+                },
+                "rule_id": {
+                  "type": "string",
+                  "description": "Identifier of the business rule that triggered this change"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<h2 id="example-fednow-credit-transfer"><a class="header" href="#example-fednow-credit-transfer">Example: FedNow Credit Transfer</a></h2>
+<p>This example demonstrates how the structure is used for a FedNow credit transfer:</p>
+<pre><code class="language-json">{
+  "id": "MSG-20241029-FEDNOW-123456",
+  "payload": {
+    "type": "inline",
+    "content": {
+      "creditTransferMessage": {
+        "messageId": "BFFF/120928-FEDNOW/123456",
+        "creditorAccount": "9876543210",
+        "amount": "1000.00",
+        "debtorAccount": "1234567890"
+      }
+    },
+    "format": "JSON",
+    "encoding": "UTF-8",
+    "size": 428
+  },
+  "tenant": "BANK_USA_001",
+  "origin": {
+    "system": "CORE_BANKING",
+    "channel": "API",
+    "timestamp": "2024-10-29T14:30:00.000Z"
+  },
+  "processing": {
+    "status": "processing",
+    "workflow_id": "FEDNOW_CREDIT_TRANSFER_V1",
+    "progress": {
+      "prev_task": "validation",
+      "prev_status_code": "SUCCESS",
+      "timestamp": "2024-10-29T14:30:01.523Z"
+    },
+    "retries": {
+      "count": 0,
+      "last_retry": null
+    }
+  },
+  "data": {
+    "messageType": "pacs.008.001.09",
+    "businessMessageIdentifier": "BFFF/120928-FEDNOW/123456",
+    "creditTransferTransaction": {
+      "paymentIdentification": {
+        "instructionIdentification": "INSTR-ID-123456",
+        "endToEndIdentification": "E2E-REF-123456",
+        "transactionIdentification": "TXID-123456"
+      },
+      "paymentTypeInformation": {
+        "localInstrument": "STANDARD",
+        "categoryPurpose": {
+          "code": "CASH"
+        }
+      },
+      "interbankSettlementAmount": {
+        "amount": "1000.00",
+        "currency": "USD"
+      },
+      "chargeBearer": "SLEV",
+      "debtor": {
+        "name": "John Smith",
+        "identification": {
+          "privateIdentification": {
+            "other": {
+              "identification": "DEB-123456"
+            }
+          }
+        },
+        "contactDetails": {
+          "emailAddress": "john.smith@email.com"
+        }
+      },
+      "debtorAccount": {
+        "identification": {
+          "accountNumber": "1234567890"
+        },
+        "type": "CACC"
+      },
+      "debtorAgent": {
+        "financialInstitutionIdentification": {
+          "clearingSystemIdentification": {
+            "code": "USABA"
+          },
+          "clearingSystemMemberIdentification": "021000021"
+        }
+      },
+      "creditor": {
+        "name": "Jane Doe",
+        "identification": {
+          "privateIdentification": {
+            "other": {
+              "identification": "CRED-789012"
+            }
+          }
+        }
+      },
+      "creditorAccount": {
+        "identification": {
+          "accountNumber": "9876543210"
+        },
+        "type": "CACC"
+      },
+      "creditorAgent": {
+        "financialInstitutionIdentification": {
+          "clearingSystemIdentification": {
+            "code": "USABA"
+          },
+          "clearingSystemMemberIdentification": "021000022"
+        }
+      },
+      "purpose": {
+        "code": "CASH"
+      },
+      "remittanceInformation": {
+        "unstructured": "Invoice payment #INV-2024-001"
+      },
+      "settlementInformation": {
+        "settlementMethod": "CLRG",
+        "clearingSystem": "FEDNOW"
+      }
+    }
+  },
+  "metadata": {
+    "format_version": "ISO20022:2019",
+    "type": "credit_transfer",
+    "priority": "real-time",
+    "tags": ["fednow", "domestic", "credit_transfer"],
+    "flags": {
+      "requires_compliance_check": true,
+      "is_cross_border": false,
+      "requires_funds_check": true
+    }
+  },
+  "auditlog": [
+    {
+      "timestamp": "2024-10-29T14:30:00.100Z",
+      "hash": "abc123def456",
+      "workflow": "FEDNOW_CREDIT_TRANSFER_V1",
+      "task": "reception",
+      "description": "Message received and initial parsing completed",
+      "executor": {
+        "service": "message-receiver",
+        "instance": "receiver-pod-123",
+        "version": "1.0.0",
+        "host": "receiver-node-east-1",
+        "region": "us-east-1"
+      },
+      "changes": [
+        {
+          "field": "processing.status",
+          "type": "create",
+          "timestamp": "2024-10-29T14:30:00.100Z",
+          "old_value": null,
+          "new_value": "received",
+          "reason": "Initial message reception",
+          "rule_id": "INIT_001"
+        }
+      ]
+    },
+    {
+      "timestamp": "2024-10-29T14:30:00.500Z",
+      "hash": "def456ghi789",
+      "workflow": "FEDNOW_CREDIT_TRANSFER_V1",
+      "task": "enrichment",
+      "description": "Enriched payment with customer and compliance information",
+      "executor": {
+        "service": "payment-enricher",
+        "instance": "enricher-pod-456",
+        "version": "1.0.0",
+        "host": "enricher-node-east-2",
+        "region": "us-east-1"
+      },
+      "changes": [
+        {
+          "field": "data.creditTransferTransaction.debtor.contactDetails",
+          "type": "create",
+          "timestamp": "2024-10-29T14:30:00.500Z",
+          "old_value": null,
+          "new_value": {
+            "emailAddress": "john.smith@email.com"
+          },
+          "reason": "Added customer contact details",
+          "rule_id": "ENRICH_001"
+        }
+      ]
+    },
+    {
+      "timestamp": "2024-10-29T14:30:01.523Z",
+      "hash": "ghi789jkl012",
+      "workflow": "FEDNOW_CREDIT_TRANSFER_V1",
+      "task": "validation",
+      "description": "Validated message against FedNow requirements",
+      "executor": {
+        "service": "payment-validator",
+        "instance": "validator-pod-789",
+        "version": "1.0.0",
+        "host": "validator-node-east-1",
+        "region": "us-east-1"
+      },
+      "changes": [
+        {
+          "field": "processing.status",
+          "type": "update",
+          "timestamp": "2024-10-29T14:30:01.523Z",
+          "old_value": "received",
+          "new_value": "processing",
+          "reason": "Validation successful, proceeding with processing",
+          "rule_id": "VAL_001"
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="key-features"><a class="header" href="#key-features">Key Features</a></h2>
+<ol>
+<li>
+<p><strong>Flexibility</strong></p>
+<ul>
+<li>Adaptable to different message standards</li>
+<li>Supports multiple use cases</li>
+<li>Extensible structure</li>
+</ul>
+</li>
+<li>
+<p><strong>Traceability</strong></p>
+<ul>
+<li>Complete audit trail</li>
+<li>Change tracking</li>
+<li>Processing history</li>
+</ul>
+</li>
+<li>
+<p><strong>Processing Control</strong></p>
+<ul>
+<li>Workflow management</li>
+<li>Status tracking</li>
+<li>Error handling</li>
+</ul>
+</li>
+<li>
+<p><strong>Multi-tenant Support</strong></p>
+<ul>
+<li>Tenant isolation</li>
+<li>Domain separation</li>
+<li>Configuration flexibility</li>
+</ul>
+</li>
+</ol>
+<h2 id="implementation-considerations"><a class="header" href="#implementation-considerations">Implementation Considerations</a></h2>
+<ol>
+<li>
+<p><strong>Message Processing</strong></p>
+<ul>
+<li>Messages are processed according to their workflow definitions</li>
+<li>Status updates reflect processing progress</li>
+<li>Audit logs maintain processing history</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Handling</strong></p>
+<ul>
+<li>Original payload is preserved</li>
+<li>Transformations are tracked</li>
+<li>Changes are audited</li>
+</ul>
+</li>
+<li>
+<p><strong>Security</strong></p>
+<ul>
+<li>Multi-tenant isolation</li>
+<li>Audit trail integrity</li>
+<li>Access control support</li>
+</ul>
+</li>
+</ol>
+<p>The Message Structure provides a robust foundation for processing various types of messages while maintaining the flexibility to adapt to different standards and domains. Its clear separation between core processing fields and domain-specific content enables effective multi-tenant, multi-domain operations within the Open Payments platform.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../message-processor/tech-components.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../message-processor/auditing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../message-processor/tech-components.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../message-processor/auditing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
